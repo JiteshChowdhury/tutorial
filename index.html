@@ -63,11 +63,23 @@ nav .wrap{display:flex;align-items:center;gap:18px;height:54px}
   white-space:nowrap;color:var(--ink);font-weight:500}
 .brand i{width:9px;height:9px;border-radius:50%;background:var(--blue);display:inline-block;
   box-shadow:0 0 0 4px rgba(10,132,255,.15)}
-.navlinks{display:flex;margin-left:auto}
-.navlinks a.cta{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-decoration:none;
-  color:#fff;background:var(--blue);padding:8px 16px;border-radius:999px;white-space:nowrap;
-  box-shadow:0 2px 8px rgba(10,132,255,.35);transition:transform .2s var(--ease),box-shadow .2s}
-.navlinks a.cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(10,132,255,.4)}
+.navlinks{display:flex;gap:8px;margin-left:auto}
+.navlinks a.cta{display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.07em;text-decoration:none;
+  color:#fff;background:linear-gradient(180deg,#4499FF,#0A7AEF);padding:6px 12px;border-radius:999px;
+  white-space:nowrap;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 2px 7px rgba(10,132,255,.32);
+  transition:transform .2s var(--ease),box-shadow .2s}
+.navlinks a.cta:hover{transform:translateY(-1px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 12px rgba(10,132,255,.42)}
+.navlinks a.cta svg{width:11px;height:11px;flex:none;transition:transform .3s var(--ease)}
+.navlinks a.cta:hover svg{transform:translateY(-1px) scale(1.1)}
+.navlinks a.cta.ghost{background:rgba(255,255,255,.55);color:var(--blue);
+  border:1px solid rgba(10,132,255,.3);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 1px 3px rgba(16,24,40,.06)}
+.navlinks a.cta.ghost:hover{background:rgba(10,132,255,.1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 3px 9px rgba(10,132,255,.2)}
+.navlinks a.on,.navlinks a.cta.ghost.on{background:var(--ink);color:#FFFFFF;border-color:transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 3px 10px rgba(28,28,30,.32)}
 .navlinks a{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-decoration:none;color:var(--ink3);
   padding:6px 11px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
 .navlinks a:hover{color:var(--ink);background:rgba(120,120,128,.1)}
@@ -181,10 +193,13 @@ section{padding:76px 0 14px;position:relative}
 .thead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:13px}
 .tnum{font-family:var(--mono);font-size:11px;color:var(--blue);letter-spacing:.16em;font-weight:600}
 .tname{font-weight:800;font-size:clamp(24px,3.2vw,33px);letter-spacing:-.03em;text-wrap:balance}
-.tstrip{display:grid;grid-template-columns:repeat(4,1fr);margin:2px 0 26px}
-.tstrip .cell{padding:2px 18px 2px 0;font-family:var(--body);font-size:13px;line-height:1.55;color:var(--ink2)}
-.tstrip .cell+.cell{border-left:1px solid var(--rule2);padding-left:18px}
-.tstrip b{display:block;font-size:9.5px;letter-spacing:.16em;color:var(--blue);font-weight:600;margin-bottom:3px}
+.tstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 26px}
+.tstrip .cell{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75);border-radius:14px;
+  padding:13px 16px 14px;font-family:var(--body);font-size:14px;line-height:1.5;color:var(--ink);
+  font-weight:450;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+.tstrip b{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.18em;color:var(--blue);font-weight:600;margin-bottom:7px}
+.tstrip b svg{width:10px;height:10px;display:block;flex:none}
 
 /* demo shells */
 .demo{position:relative;border-radius:20px;overflow:hidden;transition:box-shadow .3s}
@@ -269,10 +284,12 @@ section{padding:76px 0 14px;position:relative}
 
 /* read + pitfall */
 .rp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0 6px}
-.rp p{font-size:14px;line-height:1.55;color:var(--ink2);padding-left:13px;border-left:2.5px solid var(--rule2);border-radius:1px}
-.rp b{font-family:var(--mono);font-size:10px;letter-spacing:.2em;display:block;color:var(--blue);font-weight:600;margin-bottom:3px}
-.rp .pit{border-left-color:var(--red)}
-.rp .pit b{color:var(--red)}
+.rp>div{padding:2px 0}
+.rp p{font-size:14px;line-height:1.5;color:var(--ink);font-weight:450;margin:0}
+.rp b{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.18em;color:var(--blue);font-weight:600;margin-bottom:7px}
+.rp b svg{width:10px;height:10px;display:block;flex:none}
+.rp .pit b{color:var(--red-dim)}
 
 /* anatomy */
 .anat{border-radius:20px;padding:20px;margin-bottom:16px}
@@ -388,6 +405,115 @@ table.cheat tbody td:nth-child(5){background:rgba(175,82,222,.04)}
 #builder{display:none}
 body.route-bp #builder{display:block;padding:88px 0 64px;min-height:100vh}
 body.route-bp header.hero,body.route-bp main,body.route-bp footer,body.route-bp .hero-cue{display:none}
+#chartref{display:none}
+body.route-cr #chartref{display:block;padding:84px 0 42px;min-height:100vh}
+body.route-cr header.hero,body.route-cr main,body.route-cr footer,body.route-cr .hero-cue,
+body.route-cr #builder{display:none}
+/* ---- the chart shelf ---- */
+.crkey{display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap;margin:16px 0 2px}
+.crkey .mlab{font-size:8px;margin-right:2px}
+.crkey .k{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink2);font-weight:500}
+.crkey b{width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:9.5px;font-weight:600;color:#FFFFFF;flex:none}
+.crkey b.o{background:#0E93A6}
+.crkey b.t{background:var(--blue)}
+.crkey b.a{background:#E08600}
+.crkey b.s{background:var(--purple)}
+.khint{font-size:11.5px;color:var(--ink3)}
+.crbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 20px;
+  background:var(--glass);border:1px solid rgba(255,255,255,.7);border-radius:16px;
+  backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+  box-shadow:0 1px 4px rgba(16,24,40,.05);padding:12px 16px}
+.crchips{display:flex;gap:8px;flex-wrap:wrap}
+.crbar .chip{font-size:11px;padding:4.5px 12px}
+.crsearch{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ink);
+  background:rgba(255,255,255,.75);border:1px solid var(--rule2);border-radius:999px;
+  padding:7px 15px;min-width:190px;outline:none;transition:box-shadow .2s,border-color .2s}
+.crsearch:focus{border-color:rgba(10,132,255,.5);box-shadow:0 0 0 3px rgba(10,132,255,.15)}
+.crcount{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--ink3);white-space:nowrap}
+.crgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:14px;grid-auto-flow:dense;align-items:start}
+.ccard{--fc:var(--blue);--ftx:var(--blue);--fbg:rgba(10,132,255,.08);
+  background:var(--glass);border:1px solid rgba(255,255,255,.75);border-radius:18px;
+  backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);
+  box-shadow:var(--shadow);padding:13px 14px 14px;cursor:pointer;
+  transition:transform .3s var(--ease),box-shadow .3s}
+.ccard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.ccard[data-f="distribution"]{--fc:#FF9F0A;--ftx:#C77700;--fbg:rgba(255,159,10,.1)}
+.ccard[data-f="relationship"]{--fc:#30B0C7;--ftx:#0E93A6;--fbg:rgba(48,176,199,.1)}
+.ccard[data-f="composition"]{--fc:#AF52DE;--ftx:#9A3DC8;--fbg:rgba(175,82,222,.09)}
+.ccard[data-f="flow"]{--fc:#34C759;--ftx:#1F7A38;--fbg:rgba(52,199,89,.1)}
+.cglyph{background:linear-gradient(150deg,var(--fbg),rgba(255,255,255,.4));border-radius:12px;
+  padding:8px 10px;margin-bottom:11px}
+.cglyph svg{display:block;width:100%;height:auto}
+.ccard h4{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;
+  letter-spacing:-.01em;color:var(--ink)}
+.ccard h4 i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--fc);
+  box-shadow:0 0 0 3px var(--fbg)}
+.cfam{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.14em;
+  color:var(--ftx);margin-left:auto}
+.cdesc{font-size:12.5px;line-height:1.45;color:var(--ink2);margin-top:6px}
+.cbody,.cmeta{display:none}
+.chead{display:contents}
+.ccard.open{grid-column:span 3;grid-row:span 2;cursor:default;padding:18px 20px 20px;
+  display:flex;flex-direction:column}
+.ccard.open .cglyph{display:none}
+.ccard.open .chead{display:block;border-bottom:1px solid var(--rule);
+  padding-bottom:13px;margin-bottom:16px}
+.ctop{display:flex;align-items:flex-start;gap:14px 24px;flex-wrap:wrap}
+.ccard.open h4{flex:1 1 260px;font-size:17px;letter-spacing:-.015em}
+.ccard.open h4 .cfam{margin-left:16px;font-size:9px}
+.ccard.open .cmeta{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.mlab{font-family:var(--mono);font-size:7.5px;font-weight:600;letter-spacing:.2em;color:var(--ink3)}
+.ccard.open .cdesc{font-size:13.5px;margin-top:8px;max-width:72ch}
+.ccard.open .cbody{flex:1;display:grid;grid-template-columns:minmax(280px,330px) 1fr;
+  gap:0 32px;align-items:stretch}
+.ccolA{min-width:0;display:flex;flex-direction:column}
+.ccard.open .cviz{display:flex;align-items:center;flex:1;
+  background:linear-gradient(150deg,var(--fbg),rgba(255,255,255,.45));
+  border-radius:14px;padding:12px 10px}
+.cviz svg{display:block;width:100%;height:auto;max-height:300px}
+.csx{margin-top:13px}
+.csr{display:grid;gap:15px;align-content:start;min-width:0}
+@media (max-width:900px){.ccard.open{grid-column:1/-1}}
+@media (max-width:640px){
+  .ccard.open .cbody{grid-template-columns:1fr}
+  .ccard.open .cmeta{align-items:flex-start}
+  .csx{margin-top:15px}
+  .ccolB{margin-top:16px}}
+.cs-b{min-width:0}
+.cs-b .lab{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;
+  font-weight:600;letter-spacing:.18em;color:var(--ftx);margin-bottom:7px}
+.cs-b.pit .lab{color:var(--red-dim)}
+.cs-b ul{list-style:none;font-size:12.5px;line-height:1.5;color:var(--ink)}
+.cs-b li{padding:2px 0 2px 14px;position:relative}
+.cs-b li::before{content:"";position:absolute;left:0;top:.66em;width:5px;height:5px;border-radius:50%;
+  background:var(--fc)}
+.cs-b p{font-size:12.5px;line-height:1.5;color:var(--ink)}
+.encl{display:grid;gap:7px}
+.encrow{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:10px;align-items:start;min-width:0}
+.encrow span{font-family:var(--mono);font-size:9px;letter-spacing:.05em;border-radius:11px;
+  padding:3.5px 10px;background:var(--fbg);color:var(--ftx);border:1px solid transparent;
+  line-height:1.4;width:max-content;max-width:100%}
+.encrow span.opt{background:transparent;border-color:var(--rule2);color:var(--ink3)}
+.encrow em{font-style:normal;font-size:11.5px;color:var(--ink2);line-height:1.45;padding-top:2.5px}
+.cs-tbl{border-collapse:collapse;font-family:var(--mono);font-size:10.5px;color:var(--ink);
+  font-variant-numeric:tabular-nums;margin-top:2px}
+.cs-tbl th{font-size:8.5px;letter-spacing:.12em;color:var(--ink3);font-weight:600;text-align:left;
+  padding:0 16px 5px 0;border-bottom:1px solid var(--rule2)}
+.cs-tbl td{padding:4.5px 16px 4.5px 0;border-bottom:1px solid var(--rule)}
+.cs-tbl tr:last-child td{border-bottom:none}
+.cs-tbl td.num{font-weight:500}
+.post{display:flex;gap:7px}
+.post b{width:24px;height:24px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ink3);
+  background:rgba(120,120,128,.1)}
+.post b.on{color:#fff}
+.post b.o.on{background:#0E93A6}.post b.t.on{background:var(--blue)}
+.post b.a.on{background:#E08600}.post b.s.on{background:var(--purple)}
+@keyframes crDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes crPop{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+.ccard:hover .gd{stroke-dasharray:1;animation:crDraw .7s var(--ease)}
+.ccard:hover .gp{transform-box:fill-box;transform-origin:bottom;animation:crPop .5s var(--ease)}
 
 .bcap{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.18em;
   color:var(--ink3);margin:30px 2px 10px}
@@ -395,17 +521,51 @@ body.route-bp header.hero,body.route-bp main,body.route-bp footer,body.route-bp 
 .bpanel,.bcanvas-card,.bnotes{background:var(--glass);border:1px solid rgba(255,255,255,.7);border-radius:20px;
   backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
   box-shadow:var(--shadow)}
-.bbar{display:grid;grid-template-columns:repeat(4,1fr);padding:20px 8px 14px}
-.bbar .bgroup{padding:0 20px;border-left:1px solid var(--rule)}
-.bbar .bgroup:first-child{border-left:none}
-.blab{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;
-  color:var(--ink2);margin-bottom:11px}
+.bbar{padding:8px 22px 12px}
+.bbar .bgroup{display:grid;grid-template-columns:170px 1fr;gap:4px 18px;align-items:center;
+  padding:11px 0;border-top:1px solid var(--rule)}
+.bbar .bgroup:first-child{border-top:none}
+.bbar .chip{font-size:11px;padding:4.5px 12px;letter-spacing:.02em}
+.bgroup>.blab{grid-row:1}
+.blab{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  color:var(--ink2)}
+.bhint{display:block;font-family:var(--body);font-size:11px;color:var(--ink3);grid-column:1;grid-row:2;
+  align-self:start;margin-top:-2px}
+.bgroup>.bchips{grid-column:2;grid-row:1/3}
 .bchips{display:flex;flex-wrap:wrap;gap:8px}
-.bfoot{grid-column:1/-1;display:flex;gap:14px;align-items:center;flex-wrap:wrap;
-  border-top:1px solid var(--rule);margin:16px 20px 4px;padding-top:14px}
-.bverdict{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:.04em}
-.bverdict b{color:var(--blue);font-weight:700}
-.bcanvas-card{padding:18px;margin:0}
+.bfoot{display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+  border-top:1px solid var(--rule);margin:6px 0 2px;padding-top:13px}
+.bfnote{font-family:var(--body);font-size:11.5px;color:var(--ink3)}
+.bpanel.bbar{box-shadow:0 1px 4px rgba(16,24,40,.05)}
+.bverdict-hero,.bcanvas-card{
+  --bvt:var(--blue);--bvt-bg:rgba(10,132,255,.1);--bvt-halo:rgba(10,132,255,.18)}
+.bverdict-hero[data-t="0"],.bcanvas-card[data-t="0"]{--bvt:#0E93A6;--bvt-bg:rgba(48,176,199,.13);--bvt-halo:rgba(48,176,199,.2)}
+.bverdict-hero[data-t="2"],.bcanvas-card[data-t="2"]{--bvt:#C77700;--bvt-bg:rgba(255,159,10,.13);--bvt-halo:rgba(255,159,10,.2)}
+.bverdict-hero[data-t="3"],.bcanvas-card[data-t="3"]{--bvt:var(--purple);--bvt-bg:rgba(175,82,222,.11);--bvt-halo:rgba(175,82,222,.18)}
+.bverdict-hero{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;
+  margin:30px 0 0;padding:18px 24px 16px;border-radius:20px 20px 0 0;
+  background:linear-gradient(130deg,var(--bvt-bg),rgba(255,255,255,.55) 62%);
+  border:1px solid rgba(255,255,255,.78);border-bottom:none;
+  backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);
+  transition:background .45s var(--ease)}
+.bv-over{display:block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.22em;
+  color:var(--ink3);margin-bottom:6px}
+.bv-type{display:flex;align-items:center;gap:11px;font-weight:900;font-size:clamp(24px,3vw,31px);
+  letter-spacing:-.02em;line-height:1;color:var(--bvt);transition:color .35s var(--ease)}
+.bv-type.bvpulse{animation:bvPop .5s var(--ease)}
+@keyframes bvPop{0%{transform:scale(.95);opacity:.35}100%{transform:none;opacity:1}}
+.bv-dot{width:12px;height:12px;border-radius:50%;background:var(--bvt);
+  box-shadow:0 0 0 5px var(--bvt-halo);transition:background .35s,box-shadow .35s}
+.bv-right{text-align:right;max-width:52ch}
+.bv-why{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:0 0 5px}
+.bv-mix{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.08em;
+  color:#B77400;background:rgba(255,159,10,.16);border-radius:999px;padding:3.5px 11px;margin-bottom:6px}
+.bv-hint{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--ink3)}
+.bcanvas-card{padding:18px;margin:0;border-radius:0 0 20px 20px;border-top:none;
+  box-shadow:var(--shadow-lift)}
+.bcanvas-card::before{content:"";display:block;height:3px;margin:-18px -18px 15px;
+  background:linear-gradient(90deg,var(--bvt),var(--bvt-bg) 55%,transparent);
+  transition:background .45s var(--ease)}
 #bp-canvas{position:relative}
 #bp-canvas svg{display:block;width:100%;height:auto}
 #bp-canvas g.bz{cursor:pointer;transition:opacity .25s var(--ease)}
@@ -424,9 +584,9 @@ body.route-bp header.hero,body.route-bp main,body.route-bp footer,body.route-bp 
   .demo-body{padding:14px}
   .kpi .num{font-size:23px}
   .readout{gap:8px}
-  .tstrip{grid-template-columns:1fr;row-gap:10px}
-  .tstrip .cell+.cell{border-left:none;padding-left:0}
-  .navlinks a.cta{padding:7px 12px;font-size:10px;letter-spacing:.05em}
+  .tstrip{grid-template-columns:1fr;gap:10px}
+  .navlinks{gap:6px}
+  .navlinks a.cta{font-size:9px;letter-spacing:.05em;padding:5px 10px;gap:4px}
   .blegend{gap:6px 12px}
   .bnotes{padding:8px 16px 12px}
   .bcanvas-card{padding:12px}
@@ -469,6 +629,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
 .kpi .num,.readout .rv,.brow .val,.scrubrow output,.stamp,.fstamp,.fhint{font-variant-numeric:tabular-nums}
 
 /* detailed specimens */
+.chh{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;
+  color:var(--ink3);margin:2px 0 8px}
 .kpis.four{grid-template-columns:repeat(4,1fr)}
 .kpi{position:relative}
 .ksp{position:absolute;right:10px;bottom:9px;opacity:.85}
@@ -544,11 +706,13 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
 
 @media (max-width:980px){
   .features{grid-template-columns:1fr 1fr}
-  .bbar{grid-template-columns:1fr 1fr;row-gap:16px}
-  .bbar .bgroup:nth-child(3){border-left:none}
+  .bbar .bgroup{grid-template-columns:1fr;gap:5px}
+  .bverdict-hero{flex-direction:column;align-items:flex-start}
+  .bv-right{text-align:left}
+  .bhint{grid-column:1;grid-row:auto}
+  .bgroup>.bchips{grid-column:1;grid-row:auto}
   .split{grid-template-columns:1fr}
-  .tstrip{grid-template-columns:1fr 1fr;row-gap:12px}
-  .tstrip .cell:nth-child(3){border-left:none;padding-left:0}
+  .tstrip{grid-template-columns:1fr 1fr}
   .legend{grid-template-columns:1fr}
   .kpis.four{grid-template-columns:repeat(2,1fr)}
 }
@@ -563,8 +727,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
   #bp-canvas{overflow-x:auto;-webkit-overflow-scrolling:touch}
   #bp-canvas svg{min-width:620px}
   .features,.prins,.rp,.picker{grid-template-columns:1fr}
-  .bbar{grid-template-columns:1fr}
-  .bbar .bgroup{border-left:none}
+  .bbar{padding:6px 16px 10px}
   .kpis{grid-template-columns:1fr 1fr}
   .t3{grid-template-columns:1fr}
   .t3 .cell+.cell{border-left:none;border-top:1px solid var(--rule)}
@@ -616,7 +779,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       </svg>
     </a>
     <div class="navlinks">
-      <a class="cta" href="#/blueprint">COMPOSE A BLUEPRINT</a>
+      <a class="cta ghost" data-route="cr" href="#/charts"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M2 10V6.2M6 10V2.8M10 10V4.8"/></svg>CHART REFERENCE</a>
+      <a class="cta" data-route="bp" href="#/blueprint"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="1.4" y="2" width="9.2" height="8" rx="2"/><path d="M1.4 5.2h9.2M5.2 5.2V10"/></svg>COMPOSE A BLUEPRINT</a>
     </div>
   </div>
 </nav>
@@ -744,10 +908,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     <article class="tpanel active" role="tabpanel" id="type-operational">
       <div class="thead"><span class="tnum">TYPE 01</span><h3 class="tname">Operational</h3></div>
       <div class="tstrip">
-        <div class="cell"><b>WHO</b>frontline teams, duty managers</div>
-        <div class="cell"><b>TEMPO</b>minutes — hours, live feed</div>
-        <div class="cell"><b>ASKS</b>“is anything on fire right now?”</div>
-        <div class="cell"><b>SIGNATURE</b>thresholds · alerts · streaming tiles</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="4" r="2.2"/><path d="M1.9 10.3c.7-2 2.3-3 4.1-3s3.4 1 4.1 3"/></svg>WHO</b>frontline teams, duty managers</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.7V6l1.7 1.2"/></svg>TEMPO</b>minutes — hours, live feed</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M1.8 2.3h8.4v5.4H6.5L4 10V7.7H1.8z"/></svg>ASKS</b>“is anything on fire right now?”</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.4 8.5l2.3-3 2 1.8 2-3.3 2.9 2.2"/></svg>SIGNATURE</b>thresholds · alerts · streaming tiles</div>
       </div>
       <div class="demo">
           <div class="qmark" aria-hidden="true"><span>“Is anything on fire right now?”</span></div>
@@ -767,14 +931,16 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
             <div class="kpi" id="ops-kpi-open" data-b="4"><div class="lab">OPEN CASES</div><div class="num" id="ops-k-open">—</div></div>
             <div class="kpi" id="ops-kpi-wait" data-b="4"><div class="lab">OLDEST WAIT</div><div class="num" id="ops-k-wait">—</div></div>
           </div>
+          <div class="chh" data-b="2">INTAKE RATE — LIVE FEED VS LIMIT 52 · 8-PT AVERAGE DASHED</div>
           <div id="ops-chart" class="gbx" data-b="2"></div>
+          <div class="chh" data-b="4">EVENT LOG — MOST RECENT FIRST</div>
           <div class="ticker" data-b="4" id="ops-ticker" aria-live="polite"></div>
         </div>
         <div class="demo-note" data-b="5">Random-walk intake vs a 52/hr threshold. Inject a surge — tile, chip, breach dots and the event ticker all agree about the same moment.</div>
       </div>
       <div class="rp" data-b="5">
-        <p class="read"><b>READ</b>State → cause → queue, left to right, under ten seconds.</p>
-        <p class="pit"><b>PITFALL</b>A number that never turns red is decoration.</p>
+        <p class="read"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.2 6C2.7 3.5 4.3 2.3 6 2.3S9.3 3.5 10.8 6C9.3 8.5 7.7 9.7 6 9.7S2.7 8.5 1.2 6z"/><circle cx="6" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>READ</b>State → cause → queue, left to right, under ten seconds.</p>
+        <p class="pit"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M6 1.7 10.9 10H1.1z"/><path d="M6 4.9v2.2"/><circle cx="6" cy="8.5" r="0.55" fill="currentColor" stroke="none"/></svg>PITFALL</b>A number that never turns red is decoration.</p>
       </div>
     </article>
 
@@ -782,10 +948,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     <article class="tpanel" role="tabpanel" id="type-tactical">
       <div class="thead"><span class="tnum">TYPE 02</span><h3 class="tname">Tactical</h3></div>
       <div class="tstrip">
-        <div class="cell"><b>WHO</b>department heads, project leads</div>
-        <div class="cell"><b>TEMPO</b>daily — weekly cadence</div>
-        <div class="cell"><b>ASKS</b>“are we on pace for the sprint?”</div>
-        <div class="cell"><b>SIGNATURE</b>burn-downs · targets · WIP age</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="4" r="2.2"/><path d="M1.9 10.3c.7-2 2.3-3 4.1-3s3.4 1 4.1 3"/></svg>WHO</b>department heads, project leads</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.7V6l1.7 1.2"/></svg>TEMPO</b>daily — weekly cadence</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M1.8 2.3h8.4v5.4H6.5L4 10V7.7H1.8z"/></svg>ASKS</b>“are we on pace for the sprint?”</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.4 8.5l2.3-3 2 1.8 2-3.3 2.9 2.2"/></svg>SIGNATURE</b>burn-downs · targets · WIP age</div>
       </div>
       <div class="demo">
           <div class="qmark" aria-hidden="true"><span>“Are we on pace for the sprint?”</span></div>
@@ -801,9 +967,14 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
           </div>
           <div class="tacstats" data-b="3" id="tac-stats">—</div>
           <div class="split">
-            <div id="tac-burn" class="gbx" data-b="1"></div>
             <div>
+              <div class="chh" data-b="1">BURN-DOWN — POINTS REMAINING VS IDEAL PACE</div>
+              <div id="tac-burn" class="gbx" data-b="1"></div>
+            </div>
+            <div>
+              <div class="chh" data-b="4">WORKSTREAMS — % COMPLETE · TICK = TARGET</div>
               <div id="tac-streams" data-b="4"></div>
+              <div class="chh" data-b="4" style="margin-top:12px">AGING BLOCKERS</div>
               <div class="bchips" data-b="4">
                 <span class="bchip a6" title="blocked 6 days">PB-231 · 6d</span>
                 <span class="bchip a3" title="blocked 3 days">PB-228 · 3d</span>
@@ -815,8 +986,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         <div class="demo-note" data-b="5">Drag the day — verdict, projection and workstreams replay. Ticks are targets; the dotted line is where this pace lands.</div>
       </div>
       <div class="rp" data-b="5">
-        <p class="read"><b>READ</b>Pace vs plan first; the aging blockers explain the gap.</p>
-        <p class="pit"><b>PITFALL</b>Greens negotiated in meetings instead of computed from data.</p>
+        <p class="read"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.2 6C2.7 3.5 4.3 2.3 6 2.3S9.3 3.5 10.8 6C9.3 8.5 7.7 9.7 6 9.7S2.7 8.5 1.2 6z"/><circle cx="6" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>READ</b>Pace vs plan first; the aging blockers explain the gap.</p>
+        <p class="pit"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M6 1.7 10.9 10H1.1z"/><path d="M6 4.9v2.2"/><circle cx="6" cy="8.5" r="0.55" fill="currentColor" stroke="none"/></svg>PITFALL</b>Greens negotiated in meetings instead of computed from data.</p>
       </div>
     </article>
 
@@ -824,10 +995,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     <article class="tpanel" role="tabpanel" id="type-analytical">
       <div class="thead"><span class="tnum">TYPE 03</span><h3 class="tname">Analytical</h3></div>
       <div class="tstrip">
-        <div class="cell"><b>WHO</b>analysts, BI professionals</div>
-        <div class="cell"><b>TEMPO</b>ad-hoc deep-dive sessions</div>
-        <div class="cell"><b>ASKS</b>“why is it moving — where, since when?”</div>
-        <div class="cell"><b>SIGNATURE</b>filters · drill paths · dense comparison</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="4" r="2.2"/><path d="M1.9 10.3c.7-2 2.3-3 4.1-3s3.4 1 4.1 3"/></svg>WHO</b>analysts, BI professionals</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.7V6l1.7 1.2"/></svg>TEMPO</b>ad-hoc deep-dive sessions</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M1.8 2.3h8.4v5.4H6.5L4 10V7.7H1.8z"/></svg>ASKS</b>“why is it moving — where, since when?”</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.4 8.5l2.3-3 2 1.8 2-3.3 2.9 2.2"/></svg>SIGNATURE</b>filters · drill paths · dense comparison</div>
       </div>
       <div class="demo">
           <div class="qmark" aria-hidden="true"><span>“Why is it moving — where, since when?”</span></div>
@@ -838,20 +1009,26 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         <div class="demo-body">
           <div class="chips" id="ana-chips" data-b="3" style="margin-bottom:12px"></div>
           <div class="split">
-            <div id="ana-line" class="gbx" data-b="1"></div>
-            <div id="ana-cols" data-b="3"></div>
+            <div>
+              <div class="chh" data-b="1">ENROLMENT BY MONTH — SUM OF SCOPE</div>
+              <div id="ana-line" class="gbx" data-b="1"></div>
+            </div>
+            <div>
+              <div class="chh" data-b="3">12-MO TOTAL BY REGION — CLICK A BAR TO ISOLATE</div>
+              <div id="ana-cols" data-b="3"></div>
+            </div>
           </div>
           <div class="readout" data-b="4">
             <div class="r"><div class="rl">TOTAL IN SCOPE</div><div class="rv" id="ana-total">—</div></div>
             <div class="r"><div class="rl">PEAK MONTH</div><div class="rv" id="ana-peak">—</div></div>
-            <div class="r"><div class="rl">Δ LAST MONTH</div><div class="rv" id="ana-delta">—</div></div>
+            <div class="r"><div class="rl">AUG ANOMALY</div><div class="rv" id="ana-delta">—</div></div>
           </div>
         </div>
-        <div class="demo-note" data-b="5">Toggle regions, click a bar to isolate one, sweep the chart for a crosshair readout — everything stays in lock-step.</div>
+        <div class="demo-note" data-b="5">Chase the August dip: toggle regions, isolate APAC, sweep the crosshair — the anomaly card reads “clear” the moment the culprit leaves the scope.</div>
       </div>
       <div class="rp" data-b="5">
-        <p class="read"><b>READ</b>Start at the anomaly; slice until it localises.</p>
-        <p class="pit"><b>PITFALL</b>An analyst’s canvas shipped to executives as a “summary”.</p>
+        <p class="read"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.2 6C2.7 3.5 4.3 2.3 6 2.3S9.3 3.5 10.8 6C9.3 8.5 7.7 9.7 6 9.7S2.7 8.5 1.2 6z"/><circle cx="6" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>READ</b>Start at the anomaly; slice until it localises.</p>
+        <p class="pit"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M6 1.7 10.9 10H1.1z"/><path d="M6 4.9v2.2"/><circle cx="6" cy="8.5" r="0.55" fill="currentColor" stroke="none"/></svg>PITFALL</b>An analyst’s canvas shipped to executives as a “summary”.</p>
       </div>
     </article>
 
@@ -859,10 +1036,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     <article class="tpanel" role="tabpanel" id="type-strategic">
       <div class="thead"><span class="tnum">TYPE 04</span><h3 class="tname">Strategic</h3></div>
       <div class="tstrip">
-        <div class="cell"><b>WHO</b>senior leadership, board</div>
-        <div class="cell"><b>TEMPO</b>monthly — quarterly snapshot</div>
-        <div class="cell"><b>ASKS</b>“are the year’s bets paying off?”</div>
-        <div class="cell"><b>SIGNATURE</b>KPI vs target · bullet graphs · trend context</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="4" r="2.2"/><path d="M1.9 10.3c.7-2 2.3-3 4.1-3s3.4 1 4.1 3"/></svg>WHO</b>senior leadership, board</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M6 3.7V6l1.7 1.2"/></svg>TEMPO</b>monthly — quarterly snapshot</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M1.8 2.3h8.4v5.4H6.5L4 10V7.7H1.8z"/></svg>ASKS</b>“are the year’s bets paying off?”</div>
+        <div class="cell"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1.4 8.5l2.3-3 2 1.8 2-3.3 2.9 2.2"/></svg>SIGNATURE</b>KPI vs target · bullet graphs · trend context</div>
       </div>
       <div class="demo">
           <div class="qmark" aria-hidden="true"><span>“Are the year’s bets paying off?”</span></div>
@@ -874,8 +1051,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         <div class="demo-note" data-b="5">Switch quarters — performance moves while the targets and bands hold still. That stillness is the design.</div>
       </div>
       <div class="rp" data-b="5">
-        <p class="read"><b>READ</b>Each row: where we are, where we said we’d be, how we got here.</p>
-        <p class="pit"><b>PITFALL</b>Real-time feeds on a strategy screen — noise cosplaying as rigour.</p>
+        <p class="read"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1.2 6C2.7 3.5 4.3 2.3 6 2.3S9.3 3.5 10.8 6C9.3 8.5 7.7 9.7 6 9.7S2.7 8.5 1.2 6z"/><circle cx="6" cy="6" r="1.6" fill="currentColor" stroke="none"/></svg>READ</b>Each row: where we are, where we said we’d be, how we got here.</p>
+        <p class="pit"><b><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M6 1.7 10.9 10H1.1z"/><path d="M6 4.9v2.2"/><circle cx="6" cy="8.5" r="0.55" fill="currentColor" stroke="none"/></svg>PITFALL</b>Real-time feeds on a strategy screen — noise cosplaying as rigour.</p>
       </div>
     </article>
     </div><!-- /deck -->
@@ -908,15 +1085,15 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       <div class="step" data-t="1" data-s="6" aria-hidden="true"></div>
       <div class="step" data-t="2" data-s="0" aria-hidden="true"></div>
       <div class="step" data-t="2" data-s="1"><div class="stepnote"><b>ANALYTICAL · 1/5 — START AT THE ANOMALY</b>
-        <p>Analysis begins with the aggregate: one line, obviously bending. An analytical dashboard exists because somebody asked this line a question.</p></div></div>
+        <p>One line, one total — and growth stalls dead in August. The marker says when; nothing here can say where. Aggregates confess that something happened, never what — the question is the stall.</p></div></div>
       <div class="step" data-t="2" data-s="2"><div class="stepnote"><b>ANALYTICAL · 2/5 — DECOMPOSE</b>
-        <p>The first analytical move is always the split: one total becomes four suspects on a shared scale. Overlay beats stacking when the question is “who moved”.</p></div></div>
+        <p>Split by region and the dip localises on sight: three lines sail through August, one falls off a cliff — the global “stall” was one region’s collapse wearing a disguise. The overlay is the interrogation room — same scale, four suspects, one flinch.</p></div></div>
       <div class="step" data-t="2" data-s="3"><div class="stepnote"><b>ANALYTICAL · 3/5 — GIVE THE ANALYST HANDS</b>
-        <p>Filters are not chrome — they are the interrogation. Chips set scope, bars cross-filter, and every view answers to the same selection, or none can be trusted.</p></div></div>
+        <p>Scope is the scalpel. Cut NA, EU, LATAM out and the anomaly survives — proof it lives in APAC alone. Cut APAC and the readout says “clear”: the dip was never global.</p></div></div>
       <div class="step" data-t="2" data-s="4"><div class="stepnote"><b>ANALYTICAL · 4/5 — KEEP THE ARITHMETIC HONEST</b>
-        <p>Computed readouts — total, peak, delta — restate the current scope in numbers. If a readout ever disagrees with its chart, the screen is lying somewhere.</p></div></div>
+        <p>The readout follows the knife: total, peak and the August gap recompute for whatever is in scope. Numbers that argue back are the only ones an analyst trusts.</p></div></div>
       <div class="step" data-t="2" data-s="5"><div class="stepnote"><b>ANALYTICAL · 5/5 — THE POSTURE, ASSEMBLED</b>
-        <p>Dense on purpose: this user brought questions. Sweep the crosshair, slice the scope — density is a courtesy to experts and an assault on everyone else — which is why this posture never ships to executives.</p></div></div>
+        <p>Dense on purpose: this user brought a question and left with a culprit. Sweep the crosshair over August, slice the scope, watch the gap clear — density is a courtesy to experts and an assault on everyone else, which is why this canvas never ships to executives.</p></div></div>
       <div class="step" data-t="2" data-s="6" aria-hidden="true"></div>
       <div class="step" data-t="3" data-s="0" aria-hidden="true"></div>
       <div class="step" data-t="3" data-s="1"><div class="stepnote"><b>STRATEGIC · 1/5 — VALUE VS PROMISE</b>
@@ -1215,23 +1392,54 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     <p class="lede">Pick the brief — the structure falls out. A rough wire to argue with, not a finished design: every zone it draws earned its place in the sections above.</p>
     <div class="bcap">THE BRIEF</div>
     <div class="bpanel bbar">
-      <div class="bgroup"><span class="blab">WHO IS IT FOR?</span><div class="bchips" id="bp-aud"></div></div>
-      <div class="bgroup"><span class="blab">HOW OFTEN DOES IT CHANGE?</span><div class="bchips" id="bp-tempo"></div></div>
-      <div class="bgroup"><span class="blab">WHAT SHAPE IS THE DATA?</span><div class="bchips" id="bp-shape"></div></div>
-      <div class="bgroup"><span class="blab">WHAT MUST IT DO?</span><div class="bchips" id="bp-need"></div></div>
+      <div class="bgroup"><span class="blab">WHO IS IT FOR?</span><span class="bhint">sets the posture</span><div class="bchips" id="bp-aud"></div></div>
+      <div class="bgroup"><span class="blab">HOW OFTEN DOES IT CHANGE?</span><span class="bhint">sets the tempo</span><div class="bchips" id="bp-tempo"></div></div>
+      <div class="bgroup"><span class="blab">WHAT SHAPE IS THE DATA?</span><span class="bhint">picks the primary chart · hover to preview</span><div class="bchips" id="bp-shape"></div></div>
+      <div class="bgroup"><span class="blab">WHAT MUST IT DO?</span><span class="bhint">adds features · hover to preview</span><div class="bchips" id="bp-need"></div></div>
       <div class="bfoot">
         <button class="btn" id="bp-shuffle" type="button">shuffle brief</button>
-        <span class="bverdict" id="bp-verdict">—</span>
+        <span class="bfnote">every chip redraws the wire below</span>
       </div>
     </div>
-    <div class="bcap">THE BLUEPRINT — HOVER ANY ZONE</div>
-    <figure class="bcanvas-card">
+    <div class="bverdict-hero" id="bp-hero" data-t="1">
+      <div class="bv-left">
+        <span class="bv-over">YOUR DASHBOARD TYPE</span>
+        <div class="bv-type" id="bp-typewrap"><i class="bv-dot"></i><span id="bp-type">—</span></div>
+      </div>
+      <div class="bv-right">
+        <p class="bv-why" id="bp-why">—</p>
+        <span class="bv-mix" id="bp-mix" hidden>—</span>
+        <span class="bv-hint">HOVER ANY ZONE — EACH EXPLAINS ITSELF</span>
+      </div>
+    </div>
+    <figure class="bcanvas-card" id="bp-card" data-t="1">
       <div id="bp-canvas" aria-live="polite"><div id="bp-stage"></div></div>
     </figure>
     <div class="bcap">BUILD NOTES</div>
     <div class="bnotes"><ul class="bspec" id="bp-spec"></ul></div>
   </div>
   </section>
+
+<section id="chartref">
+  <div class="wrap">
+    <h2 class="sechead">The chart shelf</h2>
+    <p class="lede">Thirty-two ways to say it. Start from the question, not the gallery — pick what the data is doing, and the shelf narrows itself. Click any specimen to unfold its sheet.</p>
+    <div class="crkey">
+      <span class="mlab">POSTURE FIT KEY</span>
+      <span class="k"><b class="o">O</b>Operational</span>
+      <span class="k"><b class="t">T</b>Tactical</span>
+      <span class="k"><b class="a">A</b>Analytical</span>
+      <span class="k"><b class="s">S</b>Strategic</span>
+      <span class="khint">— the dashboard postures each chart serves</span>
+    </div>
+    <div class="crbar">
+      <div class="crchips" id="cr-fams"></div>
+      <input id="cr-q" class="crsearch" type="search" placeholder="search the shelf…" aria-label="Search charts">
+      <span class="crcount" id="cr-count">32 charts</span>
+    </div>
+    <div class="crgrid" id="cr-grid" aria-live="polite"></div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
@@ -1541,8 +1749,12 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     function render() {
       var armed = BUILD.stage[0] >= 3;
       var opsW = Math.max(320, Math.min(640, chartBox.clientWidth || 640));
+      var oxl = buf.map(function (_, i) {
+        return i === 2 ? "-45m" : i === 17 ? "-30m" : i === 32 ? "-15m"
+          : i === buf.length - 1 ? "now" : null;
+      });
       drawLine(chartBox, {
-        w: opsW, h: 168, min: 24, max: 66, rows: 4, thresh: (armed ? THRESH : null),
+        w: opsW, h: 168, min: 24, max: 66, rows: 4, xlabels: oxl, thresh: (armed ? THRESH : null),
         label: "Live intake rate in cases per hour against a threshold of " + THRESH,
         series: [
           { vals: movingAvg(buf, 8), color: "#9AA1AB", width: 1.4, dash: "3 4" },
@@ -1679,7 +1891,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     var DATA = {
       NA:    { color: C.teal,  vals: [42, 48, 51, 47, 55, 60, 58, 63, 67, 71, 69, 74] },
       EU:    { color: C.slate, vals: [35, 38, 41, 44, 40, 46, 49, 52, 55, 53, 58, 61] },
-      APAC:  { color: C.ochre, vals: [28, 31, 29, 35, 38, 42, 45, 44, 49, 53, 56, 60] },
+      APAC:  { color: C.ochre, vals: [30, 33, 35, 38, 41, 44, 25, 18, 43, 48, 52, 56] },
       LATAM: { color: C.plum,  vals: [12, 14, 15, 18, 17, 20, 22, 25, 24, 27, 29, 31] }
     };
     var KEYS = Object.keys(DATA);
@@ -1715,10 +1927,31 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
           guide.appendChild(S("circle", { cx: gx, cy: gy, r: 3.4, fill: s0.color, stroke: "#FFFFFF", "stroke-width": 1.4 }));
           sum += s0.vals[ix];
         });
-        var lab = MONTHS[ix] + " · " + sum.toLocaleString("en-US");
+        var rows = seriesList.map(function (s0) {
+          return { key: s0.key || "", color: s0.color, val: s0.vals[ix] };
+        }).sort(function (a, b) { return b.val - a.val; });
+        var pw = 92, ph = 14 + (rows.length + 1) * 13;
         var anchorEnd = gx > res.w * 0.62;
-        haloTxt(guide, anchorEnd ? gx - 8 : gx + 8, res.pad.t + 10, lab,
-            { anchor: anchorEnd ? "end" : "start", size: 9.5, fill: "#1C1C1E" });
+        var px = anchorEnd ? gx - 10 - pw : gx + 10;
+        var py = res.pad.t + 4;
+        guide.appendChild(S("rect", { x: px, y: py, width: pw, height: ph, rx: 7,
+          fill: "rgba(255,255,255,0.95)", stroke: "rgba(60,60,67,0.18)" }));
+        var hd = S("text", { x: px + 9, y: py + 15, "font-family": "'IBM Plex Mono',monospace",
+          "font-size": 9.5, "font-weight": 600, fill: "#1C1C1E" });
+        hd.textContent = MONTHS[ix] + (rows.length > 1 ? " · " + sum.toLocaleString("en-US") : "");
+        guide.appendChild(hd);
+        rows.forEach(function (r0, ri) {
+          var ry = py + 28 + ri * 13;
+          guide.appendChild(S("circle", { cx: px + 12, cy: ry - 3, r: 3, fill: r0.color }));
+          var kt = S("text", { x: px + 20, y: ry, "font-family": "'IBM Plex Mono',monospace",
+            "font-size": 9, fill: "#51555E" });
+          kt.textContent = r0.key;
+          guide.appendChild(kt);
+          var vt = S("text", { x: px + pw - 9, y: ry, "font-family": "'IBM Plex Mono',monospace",
+            "font-size": 9, "font-weight": 600, fill: "#1C1C1E", "text-anchor": "end" });
+          vt.textContent = r0.val;
+          guide.appendChild(vt);
+        });
       });
       hit.addEventListener("pointerleave", clearG);
     }
@@ -1737,7 +1970,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
           return KEYS.reduce(function (s1, k) { return s1 + DATA[k].vals[ix]; }, 0);
         });
         maxV = 240;
-        seriesList = [{ vals: agg, color: "#1C1C1E" }];
+        seriesList = [{ vals: agg, color: "#1C1C1E", key: "TOTAL" }];
         res = drawLine($("#ana-line"), {
           w: Math.max(300, Math.min(470, ($("#ana-line").clientWidth || 470))), h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
           label: "Total monthly enrolment across all regions",
@@ -1745,7 +1978,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         });
       } else {
         maxV = 80;
-        seriesList = keys.map(function (k) { return { vals: DATA[k].vals, color: DATA[k].color }; });
+        seriesList = keys.map(function (k) { return { vals: DATA[k].vals, color: DATA[k].color, key: k }; });
         res = drawLine($("#ana-line"), {
           w: Math.max(300, Math.min(470, ($("#ana-line").clientWidth || 470))), h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
           label: keys.length ? "Monthly enrolment overlay for " + keys.join(", ") : "No regions selected",
@@ -1777,12 +2010,23 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       });
       var tot = comb.reduce(function (a, b) { return a + b; }, 0);
       var peak = comb.indexOf(Math.max.apply(null, comb));
-      var delta = comb[comb.length - 1] - comb[comb.length - 2];
+      var dip = Math.round(comb[7] - (comb[6] + comb[8]) / 2);
       $("#ana-total").textContent = tot.toLocaleString("en-US");
       $("#ana-peak").textContent = MONTHS[peak];
       var dEl = $("#ana-delta");
-      dEl.textContent = (delta >= 0 ? "+" : "") + delta;
-      dEl.style.color = delta >= 0 ? C.good : C.redDim;
+      if (dip <= -8) {
+        dEl.textContent = String(dip);
+        dEl.style.color = C.redDim;
+      } else {
+        dEl.textContent = "clear";
+        dEl.style.color = C.good;
+      }
+      if (res && res.svg && dip <= -8) {
+        var gx = sc(7, 0, 11, res.pad.l, res.w - res.pad.r);
+        res.svg.appendChild(S("line", { x1: gx, x2: gx, y1: res.pad.t + 2, y2: res.h - res.pad.b,
+          stroke: "rgba(255,59,48,0.55)", "stroke-width": 1.2, "stroke-dasharray": "2 4" }));
+        haloTxt(res.svg, gx + 6, res.pad.t + 11, "Aug " + dip, { size: 8.5, fill: C.redDim });
+      }
     }
     BUILD.hooks[2] = render;
     render();
@@ -2593,6 +2837,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     var AUD = ["EXECS", "DEPT HEADS", "ANALYSTS", "FRONTLINE"];
     var TEMPO = ["MINUTES", "DAYS", "AD-HOC", "QUARTERS"];
     var SHAPES = [["trend", "TREND OVER TIME"], ["target", "VS TARGETS"], ["cat", "CATEGORY BREAKDOWN"],
+                  ["comp", "PARTS OF A WHOLE"], ["dist", "DISTRIBUTION"], ["funnel", "STAGE FUNNEL"],
                   ["big", "ONE HEADLINE NUMBER"], ["rows", "ROW-LEVEL TABLE"]];
     var NEEDS = [["alert", "ALERT ON LIMITS"], ["drill", "DRILL TO CAUSES"], ["compare", "COMPARE SEGMENTS"],
                  ["events", "MARK EVENTS"], ["window", "SWITCH TIME WINDOWS"]];
@@ -2600,6 +2845,23 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     var T_BY_TEMPO = ["OPERATIONAL", "TACTICAL", "ANALYTICAL", "STRATEGIC"];
     var T_BY_AUD = ["STRATEGIC", "TACTICAL", "ANALYTICAL", "OPERATIONAL"];
     var zoneInfo = {};
+
+    var SHAPEZ = { trend: ["primary"], target: ["primary", "kpis"], cat: ["primary", "support"],
+      comp: ["primary", "support"], dist: ["primary", "support"], funnel: ["primary", "support"],
+      big: ["primary", "kpis"], rows: ["rtable", "support"] };
+    var NEEDZ = { alert: ["kpis", "primary"], drill: ["filters", "rtable"], compare: ["support"],
+      events: ["primary"], window: ["primary"] };
+    function previewZ(ids) {
+      if (!ids) { return; }
+      var found = false;
+      $$("g.bz", canvas).forEach(function (z) {
+        var on = ids.indexOf(z.getAttribute("data-z")) >= 0;
+        z.classList.toggle("hot", on);
+        if (on) { found = true; }
+      });
+      canvas.classList.toggle("dim", found);
+      tip.classList.remove("on");
+    }
 
     /* one popover, anatomy-style, lives beside the stage */
     var tip = document.createElement("div");
@@ -2711,16 +2973,72 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         fill: "none", stroke: "rgba(60,60,67,0.35)", "stroke-width": 1.6, "stroke-linecap": "round" }));
       svg.appendChild(S("circle", { cx: sp[6][0], cy: sp[6][1], r: 2.4, fill: C.slate }));
     }
+    function gComp(svg, ix, iy, iw, ih) {
+      var segs = [[0.38, C.teal], [0.27, C.slate], [0.2, C.ochre], [0.15, C.plum]];
+      var inside = ih < 54;
+      var barH = inside ? Math.max(16, Math.min(24, ih - 6)) : 26;
+      var y0 = iy + (ih - barH) / 2 + (inside ? 0 : 4), x0 = ix, gap = 3;
+      segs.forEach(function (sg) {
+        var w0 = sg[0] * (iw - gap * 3);
+        svg.appendChild(S("rect", { x: x0, y: y0, width: w0, height: barH, rx: Math.min(7, barH / 2.6), fill: sg[1] }));
+        if (inside) {
+          if (w0 > 34) { tm(svg, x0 + w0 / 2, y0 + barH / 2 + 3.2, Math.round(sg[0] * 100) + "%", 8.5, "#FFFFFF", "middle"); }
+        } else {
+          tm(svg, x0 + w0 / 2, y0 - 8, Math.round(sg[0] * 100) + "%", 9, C.ink2, "middle");
+        }
+        x0 += w0 + gap;
+      });
+      if (!inside) {
+        svg.appendChild(S("line", { x1: ix, x2: ix + iw, y1: y0 + barH + 14, y2: y0 + barH + 14,
+          stroke: "rgba(60,60,67,0.14)", "stroke-width": 1 }));
+      }
+    }
+    function gDist(svg, ix, iy, iw, ih) {
+      var hs = [0.12, 0.2, 0.32, 0.48, 0.68, 0.86, 1, 0.94, 0.8, 0.62, 0.44, 0.3, 0.2, 0.12, 0.07];
+      var slot = iw / hs.length, bw = slot * 0.62;
+      svg.appendChild(S("line", { x1: ix, x2: ix + iw, y1: iy + ih + 1, y2: iy + ih + 1,
+        stroke: "rgba(60,60,67,0.16)", "stroke-width": 1 }));
+      hs.forEach(function (f, i) {
+        svg.appendChild(S("rect", { x: ix + i * slot + (slot - bw) / 2, y: iy + ih - f * ih,
+          width: bw, height: f * ih, rx: Math.min(4, bw / 2),
+          fill: "rgba(10,132,255," + (0.28 + 0.6 * f).toFixed(2) + ")" }));
+      });
+      var mx = ix + 6.5 * slot + slot / 2;
+      svg.appendChild(S("line", { x1: mx, x2: mx, y1: iy + 2, y2: iy + ih, stroke: "rgba(28,28,30,0.45)",
+        "stroke-width": 1.2, "stroke-dasharray": "3 3" }));
+      haloTxt(svg, mx + 6, iy + 11, "mean", { size: 8, fill: C.ink });
+    }
+    function gFunnel(svg, ix, iy, iw, ih) {
+      var stages = [[1, "100%"], [0.72, "72%"], [0.48, "48%"], [0.3, "30%"]];
+      var gapY = ih > 90 ? 8 : 5;
+      var rh = (ih - 3 * gapY) / 4;
+      var inside = iw < 250 || rh < 15;
+      var cx0 = ix + iw * (inside ? 0.5 : 0.4);
+      stages.forEach(function (sg, i) {
+        var w0 = sg[0] * iw * (inside ? 0.9 : 0.72);
+        var y0 = iy + i * (rh + gapY);
+        svg.appendChild(S("rect", { x: cx0 - w0 / 2, y: y0, width: w0, height: rh,
+          rx: Math.min(9, rh / 2), fill: "rgba(10,132,255," + (1 - i * 0.2) + ")" }));
+        if (inside) {
+          if (w0 > 40 && rh >= 12) { tm(svg, cx0, y0 + rh / 2 + 3, sg[1], 8.5, "#FFFFFF", "middle"); }
+        } else {
+          tm(svg, cx0 + iw * 0.4, y0 + rh / 2 + 3, sg[1], 9, C.ink2);
+        }
+      });
+    }
     function gMultiples(svg, ix, iy, iw, ih) {
       var tw = (iw - 20) / 3, th = (ih - 10) / 2;
       var labs = ["NA", "EU", "APAC", "LATAM", "MEA", "JP"];
+      var showLab = th >= 32;
       for (var i = 0; i < 6; i++) {
         var x0 = ix + (i % 3) * (tw + 10), y0 = iy + Math.floor(i / 3) * (th + 10);
         bc(svg, x0, y0, tw, th, { rx: 8 });
-        zl(svg, x0 + 8, y0 + 13, labs[i]);
-        var p = [[x0 + 8, y0 + th - 10], [x0 + tw * 0.4, y0 + th - 14 - i], [x0 + tw - 8, y0 + th - 20 - i * 1.5]];
-        var pd = "M" + p.map(function (q) { return q.join(","); }).join(" L");
-        svg.appendChild(S("path", { d: pd + " L" + (x0 + tw - 8) + "," + (y0 + th - 8) + " L" + (x0 + 8) + "," + (y0 + th - 8) + " Z",
+        if (showLab) { zl(svg, x0 + 8, y0 + 13, labs[i]); }
+        var yB = y0 + th - 7, yT = y0 + (showLab ? 17 : 6);
+        var rise = yB - yT;
+        var p = [[x0 + 8, yB], [x0 + tw * 0.4, yB - rise * (0.35 + i * 0.04)], [x0 + tw - 8, yB - rise * (0.7 + i * 0.05)]];
+        var pd = "M" + p.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" L");
+        svg.appendChild(S("path", { d: pd + " L" + (x0 + tw - 8).toFixed(1) + "," + yB + " L" + (x0 + 8) + "," + yB + " Z",
           fill: "rgba(48,176,199,0.12)" }));
         svg.appendChild(S("path", { d: pd, fill: "none", stroke: C.teal, "stroke-width": 1.7, "stroke-linecap": "round" }));
       }
@@ -2798,27 +3116,57 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
           box.appendChild(chip(lab, st[key] === i, function () { st[key] = i; render(); }));
         });
       }
-      function multis(boxId, defs, key) {
+      function multis(boxId, defs, key, zmap) {
         var box = $(boxId);
         if (!box) { return; }
         box.innerHTML = "";
         defs.forEach(function (d0) {
-          box.appendChild(chip(d0[1], !!st[key][d0[0]], function () {
+          var c = chip(d0[1], !!st[key][d0[0]], function () {
             st[key][d0[0]] = !st[key][d0[0]];
             render();
-          }));
+          });
+          if (zmap && zmap[d0[0]] && c.addEventListener) {
+            c.addEventListener("mouseenter", function () { previewZ(zmap[d0[0]]); });
+            c.addEventListener("mouseleave", clearTip);
+          }
+          box.appendChild(c);
         });
       }
       singles("#bp-aud", AUD, "aud");
       singles("#bp-tempo", TEMPO, "tempo");
-      multis("#bp-shape", SHAPES, "shape");
-      multis("#bp-need", NEEDS, "need");
+      multis("#bp-shape", SHAPES, "shape", SHAPEZ);
+      multis("#bp-need", NEEDS, "need", NEEDZ);
 
       var v = typeVerdict();
-      var vEl = $("#bp-verdict");
-      if (vEl) {
-        vEl.innerHTML = "TYPE → <b>" + v[0] + "</b>" +
-          (v[1] ? " · pulled toward " + v[1] + " — consider two screens" : "");
+      var WHY = { OPERATIONAL: "live states, thresholds and alerts",
+        TACTICAL: "progress vs plan you can replay",
+        ANALYTICAL: "scope, slice and drill until it localises",
+        STRATEGIC: "a few KPIs vs targets, with trend for direction" };
+      var TW = ["a live", "a daily", "an on-demand", "a quarterly"][st.tempo];
+      var tIdx = T_BY_TEMPO.indexOf(v[0]);
+      var typeEl = $("#bp-type"), heroEl = $("#bp-hero"), cardEl = $("#bp-card");
+      if (typeEl) { typeEl.textContent = v[0]; }
+      [heroEl, cardEl].forEach(function (el) {
+        if (el && el.setAttribute) { el.setAttribute("data-t", String(tIdx)); }
+      });
+      var whyEl = $("#bp-why");
+      if (whyEl) {
+        whyEl.textContent = AUD[st.aud].toLowerCase() + " on " + TW + " cadence → " + WHY[v[0]] + ".";
+      }
+      var mixEl = $("#bp-mix");
+      if (mixEl) {
+        if (v[1]) {
+          mixEl.removeAttribute("hidden");
+          mixEl.textContent = "pulled toward " + v[1] + " — consider two screens";
+        } else {
+          mixEl.setAttribute("hidden", "");
+        }
+      }
+      var twp = $("#bp-typewrap");
+      if (twp && twp.classList) {
+        twp.classList.remove("bvpulse");
+        void (twp.offsetWidth && 0);
+        twp.classList.add("bvpulse");
       }
 
       var sh = st.shape, nd = st.need;
@@ -2827,11 +3175,17 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       var primary =
         (st.tempo === 3 && sh.target) ? "bullets" :
         sh.trend ? "line" :
+        sh.funnel ? "funnel" :
+        sh.comp ? "comp" :
+        sh.dist ? "dist" :
         sh.target ? "bullets" :
         sh.cat ? "bars" :
         sh.big ? "big" : "line";
       var support = [];
       if (sh.cat && primary !== "bars") { support.push("bars"); }
+      if (sh.comp && primary !== "comp") { support.push("comp"); }
+      if (sh.dist && primary !== "dist") { support.push("dist"); }
+      if (sh.funnel && primary !== "funnel") { support.push("funnel"); }
       if (nd.compare) { support.push("multiples"); }
       if (sh.rows && !rail) { support.push("table"); }
       support = support.slice(0, 2);
@@ -2888,10 +3242,11 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         tb(gK, kx + 14, 114, knums[k0], 21, 800, isAlert ? C.red : C.ink);
         if (k0 === 2) { tm(gK, kx + 14 + 26, 114, "/hr", 9, C.ink3); }
         if (sh.target && k0 === 2) {
-          gK.appendChild(S("rect", { x: kx + 62, y: 100, width: kw - 78, height: 7, rx: 3.5, fill: "rgba(60,60,67,0.1)" }));
-          gK.appendChild(S("rect", { x: kx + 62, y: 102, width: (kw - 78) * 0.72, height: 3, rx: 1.5, fill: C.slate }));
-          gK.appendChild(S("line", { x1: kx + 62 + (kw - 78) * 0.85, x2: kx + 62 + (kw - 78) * 0.85,
-            y1: 97, y2: 110, stroke: C.ink, "stroke-width": 2 }));
+          var bx = kx + 14, bw2 = kw - 28;
+          gK.appendChild(S("rect", { x: bx, y: 118, width: bw2, height: 4, rx: 2, fill: "rgba(60,60,67,0.12)" }));
+          gK.appendChild(S("rect", { x: bx, y: 118, width: bw2 * 0.72, height: 4, rx: 2, fill: C.slate }));
+          gK.appendChild(S("line", { x1: bx + bw2 * 0.85, x2: bx + bw2 * 0.85, y1: 114, y2: 126,
+            stroke: C.ink, "stroke-width": 2 }));
         }
       }
       zoneInfo.kpis = { t: "The verdict row",
@@ -2902,7 +3257,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       /* primary */
       var gP = zone("primary");
       var pLabels = { line: "PRIMARY — TREND", bullets: "PRIMARY — VS TARGETS", bars: "PRIMARY — BREAKDOWN",
-        big: "PRIMARY — HEADLINE" };
+        big: "PRIMARY — HEADLINE", comp: "PRIMARY — PARTS OF A WHOLE", dist: "PRIMARY — DISTRIBUTION",
+        funnel: "PRIMARY — STAGE FUNNEL" };
       zl(gP, LX, 154, pLabels[primary] + (nd.window ? " · 6M / 12M / 24M" : ""));
       bc(gP, LX, 158, leftW, primaryH);
       var ix = LX + 16, iy = 172, iw = leftW - 32, ih = primaryH - 28;
@@ -2910,6 +3266,9 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       else if (primary === "bullets") { gBullets(gP, ix, iy, iw, ih); }
       else if (primary === "bars") { gBars(gP, ix, iy + 4, iw, ih - 8); }
       else if (primary === "big") { gBig(gP, ix, iy, iw, ih); }
+      else if (primary === "comp") { gComp(gP, ix, iy + 8, iw, ih - 16); }
+      else if (primary === "dist") { gDist(gP, ix, iy + 6, iw, ih - 12); }
+      else if (primary === "funnel") { gFunnel(gP, ix, iy + 4, iw, ih - 8); }
       var pInfo = {
         line: "One question, one chart, top-left [P-03]." +
               (nd.alert ? " The dashed limit turns the chart into a monitor [F-04]." : "") +
@@ -2917,7 +3276,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
               (nd.window ? " Preset windows keep comparisons honest [F-08]." : ""),
         bullets: "Actual, target, qualitative bands — bullets carry the verdict in a fifth of a gauge’s ink [F-03 · P-06].",
         bars: "Ranked categories; the tallest bar is the story. Click-to-filter makes it everyone’s scope control [F-06].",
-        big: "The whole canvas defends one number — the five-second test made literal [P-02]."
+        big: "The whole canvas defends one number — the five-second test made literal [P-02].",
+        comp: "One bar, whole story: parts that sum to 100%. Position beats angle — this is the pie chart that respects your retina [P-06].",
+        dist: "The shape of the population, not its average. The dashed mean shows exactly how much the average lies.",
+        funnel: "Stage-to-stage conversion, biggest cliff first. Whichever step loses the most people is the meeting agenda."
       };
       zoneInfo.primary = { t: pLabels[primary].replace("PRIMARY — ", "Primary view — ").toLowerCase()
         .replace(/^p/, "P"), p: pInfo[primary] };
@@ -2935,11 +3297,17 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
           if (kind === "bars") { gBars(gS, sx + 14, sy + 12, sw - 28, sh0 - 24); }
           if (kind === "multiples") { gMultiples(gS, sx + 12, sy + 10, sw - 24, sh0 - 20); }
           if (kind === "table") { gTableRows(gS, sx + 14, sy + 12, sw - 28, sh0 - 24, 4); }
+          if (kind === "comp") { gComp(gS, sx + 14, sy + 10, sw - 28, sh0 - 20); }
+          if (kind === "dist") { gDist(gS, sx + 14, sy + 12, sw - 28, sh0 - 26); }
+          if (kind === "funnel") { gFunnel(gS, sx + 14, sy + 8, sw - 28, sh0 - 16); }
         });
         zoneInfo.support = { t: "Supporting breakdowns",
           p: support.map(function (s0) {
             return { bars: "second-order splits of the headline",
               multiples: "small multiples on one shared scale — same scale or it’s a lie [F-09]",
+              comp: "the composition split — parts of the same whole",
+              dist: "the distribution behind the average",
+              funnel: "the stage funnel — where the losses live",
               table: "the receipts, row by row" }[s0];
           }).join(" · ") + ". Support explains the primary; it never competes with it." };
       }
@@ -2948,26 +3316,26 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       if (rail) {
         var RX = LX + leftW + 12, RW = 746 - RX;
         var gF = zone("filters");
-        zl(gF, RX - 6, 61, "FILTERS");
-        bc(gF, RX - 6, 66, RW, 150, { rx: 14, fill: "#F1F3F9" });
-        zl(gF, RX + 8, 88, "SCOPE");
-        gF.appendChild(S("rect", { x: RX + 8, y: 98, width: 44, height: 20, rx: 10, fill: C.slate }));
-        gF.appendChild(S("rect", { x: RX + 58, y: 98, width: 38, height: 20, rx: 10, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.22)" }));
-        gF.appendChild(S("rect", { x: RX + 8, y: 124, width: 50, height: 20, rx: 10, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.22)" }));
-        bc(gF, RX + 8, 156, RW - 28, 26, { rx: 8, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.18)" });
-        zl(gF, RX + 18, 172, "date range ▾");
+        zl(gF, RX, 61, "FILTERS");
+        bc(gF, RX, 66, RW, 150, { rx: 14, fill: "#F1F3F9" });
+        zl(gF, RX + 14, 88, "SCOPE");
+        gF.appendChild(S("rect", { x: RX + 14, y: 98, width: 44, height: 20, rx: 10, fill: C.slate }));
+        gF.appendChild(S("rect", { x: RX + 64, y: 98, width: 38, height: 20, rx: 10, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.22)" }));
+        gF.appendChild(S("rect", { x: RX + 14, y: 124, width: 50, height: 20, rx: 10, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.22)" }));
+        bc(gF, RX + 14, 156, RW - 28, 26, { rx: 8, fill: "#FFFFFF", stroke: "rgba(60,60,67,0.18)" });
+        zl(gF, RX + 24, 172, "date range ▾");
         zoneInfo.filters = { t: "The filter rail",
           p: "Scope chips and a date field — every control re-asks the same question, narrower [F-05]." +
              (nd.drill ? " The drill path descends here and breadcrumbs back [F-07]." : "") };
         var railBottomKind = sh.rows ? "DETAIL TABLE" : (nd.drill ? "TOP MOVERS" : null);
         if (railBottomKind) {
           var gR = zone("rtable");
-          zl(gR, RX - 6, 226, railBottomKind);
-          bc(gR, RX - 6, 232, RW, 182, { rx: 14 });
-          gR.appendChild(S("path", { d: "M" + (RX - 6) + ",246 a14,14 0 0 1 14,-14 h" + (RW - 28) +
+          zl(gR, RX, 242, railBottomKind);
+          bc(gR, RX, 246, RW, 180, { rx: 14 });
+          gR.appendChild(S("path", { d: "M" + RX + ",260 a14,14 0 0 1 14,-14 h" + (RW - 28) +
             " a14,14 0 0 1 14,14 v12 h-" + RW + " Z", fill: "#F1F3F9" }));
-          tm(gR, RX + 8, 250, sh.rows ? "SITE · OPEN · AGE" : "KPI · NOW · \u0394", 7.5, C.ink3);
-          gTableRows(gR, RX + 8, 268, RW - 28, 136, 5, !sh.rows);
+          tm(gR, RX + 14, 264, sh.rows ? "SITE · OPEN · AGE" : "KPI · NOW · \u0394", 7.5, C.ink3);
+          gTableRows(gR, RX + 14, 282, RW - 28, 130, 5, !sh.rows);
           zoneInfo.rtable = sh.rows
             ? { t: "Detail table", p: "Row-level receipts for the numbers above — last in the scan, first in an audit." }
             : { t: "Top movers", p: "What changed most since the last look — the drill-down’s front door [F-07]." };
@@ -2999,6 +3367,9 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         var pline = { line: "trend line" + (nd.alert ? " with alert limit <i>[F-04]</i>" : " <i>[F-02]</i>"),
           bullets: "bullet stack — actual · target · bands <i>[F-03]</i>",
           bars: "category bars <i>[F-06]</i>",
+          comp: "composition bar — parts of a whole <i>[P-06]</i>",
+          dist: "distribution histogram with mean marker",
+          funnel: "stage funnel — conversion between steps",
           big: "one headline number vs plan <i>[F-01 · P-02]</i>" }[primary];
         rows.push("<li><b>PRIMARY</b> — " + pline +
           (nd.events ? " · annotated events <i>[F-11]</i>" : "") +
@@ -3006,6 +3377,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         if (support.length) {
           rows.push("<li><b>SUPPORT</b> — " + support.map(function (s0) {
             return { bars: "breakdown bars", multiples: "small multiples, shared scale <i>[F-09]</i>",
+              comp: "composition split", dist: "distribution", funnel: "stage funnel",
               table: "detail rows" }[s0];
           }).join(" · ") + "</li>");
         }
@@ -3032,6 +3404,1075 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       });
     }
     render();
+  })();
+
+  /* ---------- the chart shelf ---------- */
+  (function chartsInit() {
+    var grid = $("#cr-grid");
+    if (!grid || !grid.appendChild) { return; }
+    var CR=[{"n":"Bar chart","f":"comparison","d":"Bars compare values across categories — length equals value.","u":["Sales by region","Population by country","Test scores by group"],"e":[["X Axis","Categorical",1,"Category labels"],["Y Axis","Numeric",1,"Values to compare"],["Color","Categorical",0,"Color-encode bars"],["Labels","Any",0,"Text on/near bars"],["Series","Categorical",0,"Small multiples"]],"w":[["Month","Revenue ($K)"],["Jan","42"],["Feb","58"],["Mar","51"],["Apr","67"]],"fn":"rBar","r":[{"l":"Jan","v":42},{"l":"Feb","v":58},{"l":"Mar","v":51},{"l":"Apr","v":67},{"l":"May","v":73},{"l":"Jun","v":65}]},{"n":"Multiset bar chart","f":"comparison","d":"Side-by-side bars compare sub-groups within each category.","u":["Revenue per product per quarter","Survey results by demographic"],"e":[["X Axis","Categorical",1,"Main category"],["Groups","Categorical",1,"Sub-category — one bar each"],["Size","Numeric",1,"Bar height"],["Color","Categorical",0,"Usually maps to Groups"],["Series","Categorical",0,"Small multiples"]],"w":[["Quarter","Dept","Budget ($K)"],["Q1","Eng","850"],["Q1","Mkt","320"],["Q2","Eng","900"]],"fn":"rGroupedBar","r":[{"x":"Q1","gs":[{"g":"Eng","v":850},{"g":"Mkt","v":320},{"g":"Sales","v":480}]},{"x":"Q2","gs":[{"g":"Eng","v":900},{"g":"Mkt","v":410},{"g":"Sales","v":520}]},{"x":"Q3","gs":[{"g":"Eng","v":780},{"g":"Mkt","v":380},{"g":"Sales","v":560}]}]},{"n":"Stacked bar chart","f":"comparison","d":"Segments stack inside each bar to show parts of a total.","u":["Budget breakdown per department","Energy mix by country"],"e":[["X Axis","Categorical",1,"Category on axis"],["Stacks","Categorical",1,"Segments within bar"],["Size","Numeric",1,"Segment height"],["Color","Categorical",0,"Color per segment"],["Series","Categorical",0,"Small multiples"]],"w":[["Country","Source","GWh"],["Germany","Solar","52"],["Germany","Wind","128"],["France","Nuclear","340"]],"fn":"rStackedBar","r":[{"x":"DE","ss":[{"s":"Solar","v":52},{"s":"Wind","v":128},{"s":"Nuclear","v":80}]},{"x":"FR","ss":[{"s":"Solar","v":18},{"s":"Wind","v":40},{"s":"Nuclear","v":340}]},{"x":"UK","ss":[{"s":"Solar","v":30},{"s":"Wind","v":95},{"s":"Nuclear","v":60}]},{"x":"ES","ss":[{"s":"Solar","v":65},{"s":"Wind","v":88},{"s":"Nuclear","v":22}]}]},{"n":"Line chart","f":"comparison","d":"Points joined by lines show trends over time.","u":["Stock prices over time","Temperature trends","Monthly web traffic"],"e":[["X Axis","Date / Numeric",1,"Continuous axis — usually time"],["Y Axis","Numeric",1,"Metric tracked"],["Color","Categorical",0,"One line per value"],["Labels","Any",0,"Point labels"],["Series","Categorical",0,"Small multiples"]],"w":[["Date","Visitors","Channel"],["Jan","12400","Organic"],["Feb","13100","Organic"],["Jan","8200","Paid"]],"fn":"rLine","r":[{"x":"Jan","ls":[{"g":"Organic","v":124},{"g":"Paid","v":82},{"g":"Social","v":45}]},{"x":"Feb","ls":[{"g":"Organic","v":138},{"g":"Paid","v":79},{"g":"Social","v":52}]},{"x":"Mar","ls":[{"g":"Organic","v":155},{"g":"Paid","v":94},{"g":"Social","v":61}]},{"x":"Apr","ls":[{"g":"Organic","v":148},{"g":"Paid","v":88},{"g":"Social","v":74}]},{"x":"May","ls":[{"g":"Organic","v":172},{"g":"Paid","v":101},{"g":"Social","v":68}]},{"x":"Jun","ls":[{"g":"Organic","v":191},{"g":"Paid","v":95},{"g":"Social","v":82}]}]},{"n":"Area chart","f":"comparison","d":"A line with the area below filled — emphasises volume over time.","u":["Monthly app sessions","Cumulative revenue","User growth"],"e":[["X Axis","Date / Numeric",1,"Continuous axis — usually time"],["Y Axis","Numeric",1,"Metric tracked"],["Color","Categorical",0,"Fill color"],["Labels","Any",0,"Point labels"],["Series","Categorical",0,"Small multiples"]],"w":[["Month","Sessions (K)"],["Jan","8.2"],["Mar","11.2"],["Jun","16.2"],["Sep","22.8"]],"fn":"rArea","r":[{"x":"Jan","v":8200},{"x":"Feb","v":9400},{"x":"Mar","v":11200},{"x":"Apr","v":10800},{"x":"May","v":13500},{"x":"Jun","v":16200},{"x":"Jul","v":18900},{"x":"Aug","v":17400},{"x":"Sep","v":22800},{"x":"Oct","v":25100}]},{"n":"Stacked area chart","f":"comparison","d":"Stacked layers show each part and the total over time.","u":["Revenue by product line","Traffic by channel","Resource usage by service"],"e":[["X Axis","Date / Numeric",1,"Continuous axis"],["Layers","Categorical",1,"Category — one layer per value"],["Size","Numeric",1,"Layer height"],["Color","Categorical",0,"Layer color"],["Series","Categorical",0,"Small multiples"]],"w":[["Quarter","Product","Revenue ($K)"],["Q1","Pro","420"],["Q1","Teams","280"],["Q1","Enterprise","160"]],"fn":"rStackedArea","r":[{"x":"Q1","ls":[{"g":"Pro","v":420},{"g":"Teams","v":280},{"g":"Ent","v":160}]},{"x":"Q2","ls":[{"g":"Pro","v":480},{"g":"Teams","v":340},{"g":"Ent","v":210}]},{"x":"Q3","ls":[{"g":"Pro","v":510},{"g":"Teams","v":390},{"g":"Ent","v":280}]},{"x":"Q4","ls":[{"g":"Pro","v":580},{"g":"Teams","v":450},{"g":"Ent","v":370}]}]},{"n":"Bump chart","f":"comparison","d":"Lines track rank over time — height equals rank.","u":["Team standings over a season","Country rankings per year"],"e":[["X Axis","Date / Categorical",1,"Time points or stages"],["Y Axis","Categorical",1,"Item being ranked"],["Size","Numeric",0,"Line thickness"],["Color","Categorical",0,"One line per item"],["Series","Categorical",0,"Small multiples"]],"w":[["Year","Company","Rank"],["2020","Apple","1"],["2021","MSFT","1"],["2022","MSFT","1"],["2023","Apple","1"]],"fn":"rBump","r":[{"item":"Apple","ranks":[{"t":"2020","r":1},{"t":"2021","r":1},{"t":"2022","r":2},{"t":"2023","r":1}]},{"item":"MSFT","ranks":[{"t":"2020","r":2},{"t":"2021","r":2},{"t":"2022","r":1},{"t":"2023","r":2}]},{"item":"Amazon","ranks":[{"t":"2020","r":3},{"t":"2021","r":4},{"t":"2022","r":4},{"t":"2023","r":3}]},{"item":"Alphabet","ranks":[{"t":"2020","r":4},{"t":"2021","r":3},{"t":"2022","r":3},{"t":"2023","r":4}]},{"item":"Tesla","ranks":[{"t":"2020","r":7},{"t":"2021","r":5},{"t":"2022","r":5},{"t":"2023","r":5}]}]},{"n":"Radar chart","f":"comparison","d":"Axes radiate from the centre; values join into a polygon.","u":["Athlete performance profiles","Product feature scoring"],"e":[["Axes","Numeric (multiple)",1,"Multiple numeric columns — one axis each"],["Color","Categorical",0,"One polygon per group"],["Labels","Categorical",0,"Legend labels"]],"w":[["Player","Speed","Power","Agility","Endurance"],["Alice","85","70","90","78"],["Bob","72","88","65","91"]],"fn":"rRadar","r":[{"g":"Alice","vals":{"Speed":85,"Power":70,"Agility":90,"Endurance":78,"Accuracy":82}},{"g":"Bob","vals":{"Speed":72,"Power":88,"Agility":65,"Endurance":91,"Accuracy":74}}]},{"n":"Gantt chart","f":"comparison","d":"Bars run from start to end date for each task.","u":["Project planning","Event schedules","Production timelines"],"e":[["Task","Categorical",1,"Task name — Y axis label"],["Start Date","Date",1,"Bar start"],["End Date","Date",1,"Bar end"],["Color","Categorical",0,"Color by group / status"],["Labels","Any",0,"Bar labels"]],"w":[["Task","Start","End","Team"],["Design","Jan 1","Jan 15","UX"],["Dev","Jan 10","Feb 10","Eng"],["QA","Feb 5","Feb 20","QA"]],"fn":"rGantt","r":[{"task":"Design","s":1,"e":14},{"task":"Dev","s":8,"e":35},{"task":"Frontend","s":15,"e":38},{"task":"Testing","s":32,"e":45},{"task":"Deploy","s":43,"e":50}]},{"n":"Beeswarm plot","f":"distribution","d":"Every point shown, nudged apart — the true distribution shape.","u":["Income distribution","Test score spread","Attack events over time"],"e":[["X Axis","Numeric / Date",1,"Variable distributed"],["Color","Categorical / Numeric",0,"Group membership"],["Size","Numeric",0,"Point size"],["Labels","Any",0,"Point labels"],["Series","Categorical",0,"One swarm per value"]],"w":[["Employee","Salary ($K)","Dept"],["Alice","95","Eng"],["Bob","72","Sales"],["Carol","110","Eng"],["Dan","128","Exec"]],"fn":"rBeeswarm","r":[{"v":72},{"v":78},{"v":68},{"v":82},{"v":75},{"v":95},{"v":110},{"v":88},{"v":102},{"v":118},{"v":94},{"v":128},{"v":145},{"v":135},{"v":67},{"v":85},{"v":91}]},{"n":"Box plot","f":"distribution","d":"Five statistics per group: min, quartiles, median, max.","u":["Salary ranges per industry","Experiment results per condition"],"e":[["Group","Categorical",1,"Category on X axis"],["Value","Numeric",1,"Column to summarize"],["Color","Categorical",0,"Color per group"],["Labels","Any",0,"Group labels"]],"w":[["Dept","Salary ($K)"],["Eng","88–118"],["Sales","62–88"],["Mkt","58–85"],["Exec","120–165"]],"fn":"rBoxplot","r":[{"g":"Eng","vals":[88,91,94,95,97,102,107,110,115,118]},{"g":"Sales","vals":[62,65,68,72,74,75,78,80,82,88]},{"g":"Mkt","vals":[58,62,65,68,70,72,75,78,82,85]},{"g":"Exec","vals":[120,125,128,135,138,142,145,150,155,165]}]},{"n":"Violin plot","f":"distribution","d":"A density curve per group — width shows how many values sit there.","u":["Gene expression levels","Performance score distributions by group"],"e":[["Group","Categorical",1,"Category axis"],["Value","Numeric",1,"Numeric values"],["Color","Categorical",0,"Color per violin"],["Labels","Any",0,"Labels"]],"w":[["Group","Response (ms)"],["Control","198–248"],["Treatment","145–185"],["Placebo","195–245"]],"fn":"rViolin","r":[{"g":"Control","vals":[198,204,212,218,222,225,228,232,234,240,245,248]},{"g":"Treatment","vals":[145,148,152,155,158,160,162,165,168,172,178,185]},{"g":"Placebo","vals":[195,200,208,215,220,224,228,234,238,245]}]},{"n":"Horizon graph","f":"distribution","d":"Colour bands compress many time series into short rows.","u":["Comparing many time series simultaneously","Financial panel charts"],"e":[["Date","Date",1,"X axis — time"],["Value","Numeric",1,"Metric over time"],["Group","Categorical",0,"One row per group"],["Series","Categorical",0,"Small multiples"]],"w":[["Date","Temp (C)","City"],["Jan","3","Berlin"],["Jul","28","Berlin"],["Jan","12","Madrid"]],"fn":"rHorizon","r":[{"g":"Berlin","vals":[3,4,8,14,19,23,25,24,20,13,7,3]},{"g":"Madrid","vals":[12,13,15,18,21,28,32,32,26,19,14,11]},{"g":"Tokyo","vals":[7,8,12,17,21,25,28,30,26,20,14,9]}]},{"n":"Hexagonal binning","f":"distribution","d":"Points grouped into hexagons — colour shows density.","u":["Large scatter plots","Geospatial density","Sensor data density"],"e":[["X Axis","Numeric",1,"Horizontal variable"],["Y Axis","Numeric",1,"Vertical variable"],["Color","Numeric",0,"Density metric per cell"]],"w":[["Age","Income ($K)"],["28","45"],["31","52"],["34","61"],["45","88"]],"fn":"rHex","r":[{"x":22,"y":38},{"x":26,"y":85},{"x":26,"y":97},{"x":29,"y":78},{"x":30,"y":100},{"x":31,"y":63},{"x":31,"y":69},{"x":31,"y":91},{"x":34,"y":80},{"x":35,"y":77},{"x":35,"y":85},{"x":36,"y":55},{"x":36,"y":74},{"x":36,"y":95},{"x":36,"y":101},{"x":37,"y":71},{"x":37,"y":81},{"x":38,"y":73},{"x":38,"y":79},{"x":38,"y":88},{"x":39,"y":96},{"x":41,"y":66},{"x":41,"y":81},{"x":41,"y":84},{"x":41,"y":86},{"x":42,"y":54},{"x":42,"y":75},{"x":42,"y":85},{"x":42,"y":87},{"x":42,"y":95},{"x":43,"y":89},{"x":44,"y":85},{"x":45,"y":65},{"x":45,"y":87},{"x":47,"y":68},{"x":48,"y":99},{"x":52,"y":83},{"x":54,"y":39},{"x":55,"y":87},{"x":55,"y":92},{"x":57,"y":92}]},{"n":"Contour plot","f":"distribution","d":"Density lines circle where points concentrate.","u":["Bivariate density visualization","Feature space cluster analysis"],"e":[["X Axis","Numeric",1,"Horizontal variable"],["Y Axis","Numeric",1,"Vertical variable"],["Color","Categorical / Numeric",0,"Group or density"],["Labels","Any",0,"Labels"]],"w":[["Height (cm)","Weight (kg)","Group"],["170","68","Adult"],["185","90","Athlete"],["188","95","Athlete"]],"fn":"rContour","r":[{"x":162,"y":67},{"x":163,"y":62},{"x":168,"y":66},{"x":169,"y":56},{"x":169,"y":65},{"x":170,"y":70},{"x":170,"y":78},{"x":171,"y":74},{"x":173,"y":82},{"x":174,"y":78},{"x":175,"y":87},{"x":175,"y":91},{"x":176,"y":70},{"x":176,"y":84},{"x":177,"y":81},{"x":178,"y":82},{"x":179,"y":84},{"x":179,"y":87},{"x":180,"y":82},{"x":182,"y":65},{"x":182,"y":66},{"x":182,"y":67},{"x":182,"y":69},{"x":183,"y":80},{"x":183,"y":86},{"x":184,"y":90},{"x":186,"y":95},{"x":187,"y":88},{"x":189,"y":82},{"x":190,"y":80}]},{"n":"Convex hull","f":"distribution","d":"The smallest polygon around each group shows cluster extent.","u":["Cluster extent visualization","Species habitat ranges"],"e":[["X Axis","Numeric",1,"Horizontal position"],["Y Axis","Numeric",1,"Vertical position"],["Groups","Categorical",1,"Hull membership"],["Color","Categorical",0,"Color per group"],["Labels","Any",0,"Labels"]],"w":[["PC1","PC2","Species"],["1.2","0.8","Setosa"],["1.4","0.9","Setosa"],["-0.3","2.1","Versicolor"]],"fn":"rHull","r":[{"x":1.2,"y":0.8,"g":"Setosa"},{"x":1.4,"y":0.9,"g":"Setosa"},{"x":0.9,"y":1.1,"g":"Setosa"},{"x":1.3,"y":0.7,"g":"Setosa"},{"x":1.1,"y":1.2,"g":"Setosa"},{"x":-0.3,"y":2.1,"g":"Versicolor"},{"x":-0.1,"y":1.9,"g":"Versicolor"},{"x":0.2,"y":2.3,"g":"Versicolor"},{"x":-0.2,"y":2.0,"g":"Versicolor"},{"x":2.1,"y":3.2,"g":"Virginica"},{"x":2.3,"y":3.0,"g":"Virginica"},{"x":2.0,"y":3.4,"g":"Virginica"},{"x":2.2,"y":3.1,"g":"Virginica"}]},{"n":"Voronoi diagram","f":"distribution","d":"Each cell holds everything closest to its point.","u":["Service area coverage","Nearest facility mapping","Retail catchment areas"],"e":[["X Axis","Numeric",1,"Horizontal position"],["Y Axis","Numeric",1,"Vertical position"],["Size","Numeric",0,"Point size"],["Color","Categorical / Numeric",0,"Cell color"],["Labels","Any",0,"Labels"]],"w":[["Store","Lon","Lat"],["North","-73.98","40.78"],["Central","-73.97","40.75"],["South","-73.96","40.72"]],"fn":"rVoronoi","r":[{"l":"North","x":0.2,"y":0.2},{"l":"East","x":0.78,"y":0.25},{"l":"Central","x":0.5,"y":0.5},{"l":"West","x":0.15,"y":0.72},{"l":"South","x":0.72,"y":0.78}]},{"n":"Bubble / scatter plot","f":"relationship","d":"Points on two axes reveal correlation; size adds a third variable.","u":["GDP vs life expectancy","Risk vs return","Feature correlation"],"e":[["X Axis","Numeric",1,"Horizontal variable"],["Y Axis","Numeric",1,"Vertical variable"],["Size","Numeric",0,"Bubble radius — 3rd variable"],["Color","Categorical / Numeric",0,"Group or gradient"],["Labels","Any",0,"Point labels"]],"w":[["Country","GDP/cap","Life Exp","Pop (M)"],["USA","63K","78","331"],["Japan","46K","84","126"],["India","2.1K","70","1380"]],"fn":"rScatter","r":[{"x":63000,"y":78,"s":331,"l":"USA"},{"x":46000,"y":84,"s":126,"l":"Japan"},{"x":8700,"y":76,"s":213,"l":"Brazil"},{"x":2100,"y":70,"s":1380,"l":"India"},{"x":51000,"y":82,"s":67,"l":"France"},{"x":46000,"y":80,"s":84,"l":"Germany"},{"x":1800,"y":63,"s":200,"l":"Nigeria"}]},{"n":"Arc diagram","f":"relationship","d":"Nodes on a line; arcs link related pairs.","u":["Co-authorship networks","Character co-appearances","Music collaborations"],"e":[["Source","Categorical",1,"Origin node"],["Target","Categorical",1,"Destination node"],["Size","Numeric",0,"Arc width — connection strength"],["Color","Categorical",0,"Color per link"],["Labels","Any",0,"Node labels"]],"w":[["Author A","Author B","Papers"],["Smith","Jones","5"],["Smith","Lee","2"],["Jones","Patel","8"]],"fn":"rArc","r":{"nodes":[{"l":"Smith"},{"l":"Jones"},{"l":"Lee"},{"l":"Patel"},{"l":"Chen"},{"l":"Kim"}],"links":[{"s":0,"t":1,"w":5},{"s":0,"t":2,"w":2},{"s":1,"t":3,"w":8},{"s":2,"t":3,"w":3},{"s":3,"t":4,"w":6},{"s":4,"t":5,"w":4},{"s":1,"t":5,"w":2}],"maxW":8}},{"n":"Chord diagram","f":"relationship","d":"Categories on a circle; ribbon width shows flow between them.","u":["Migration flows between countries","Trade volumes","User journey transitions"],"e":[["Source","Categorical",1,"Origin category"],["Target","Categorical",1,"Destination category"],["Size","Numeric",1,"Flow volume — chord width"]],"w":[["Origin","Destination","Migrants (K)"],["Mexico","USA","580"],["India","USA","140"],["China","USA","105"]],"fn":"rChord","r":{"labels":["Mexico","USA","India","China"],"matrix":[[0,580,30,20],[580,0,140,105],[30,140,0,45],[20,105,45,0]]}},{"n":"Parallel coordinates","f":"relationship","d":"Each record is a line crossing several axes.","u":["Multi-dimensional datasets","Finding correlations","Car comparisons"],"e":[["Axes","Numeric / Categorical (multiple)",1,"Multiple columns — one axis each"],["Color","Categorical / Numeric",0,"Line color"],["Labels","Any",0,"Line labels"]],"w":[["Car","MPG","HP","Weight","Cyl"],["Civic","36","70","1900","4"],["Mustang","18","225","3500","8"],["Prius","52","121","3042","4"]],"fn":"rParallel","r":{"axes":["MPG","HP","Weight","Cyl"],"rows":[{"vals":[36,70,1900,4]},{"vals":[18,225,3500,8]},{"vals":[28,203,3300,4]},{"vals":[20,400,4500,8]},{"vals":[52,121,3042,4]},{"vals":[19,495,3300,8]}]}},{"n":"Matrix plot","f":"relationship","d":"A grid of cells; colour shows each pair's strength.","u":["Correlation matrix","Adjacency matrix","Co-occurrence heatmap"],"e":[["X","Categorical",1,"Column categories"],["Y","Categorical",1,"Row categories"],["Size","Numeric",0,"Cell size / intensity"],["Color","Numeric / Categorical",0,"Relationship value"],["Labels","Any",0,"Cell labels"]],"w":[["Word A","Word B","Count"],["data","science","142"],["machine","learning","187"],["deep","learning","211"]],"fn":"rMatrix","r":[{"x":"Python","y":"Python","v":0},{"x":"Python","y":"JS","v":12},{"x":"Python","y":"SQL","v":45},{"x":"Python","y":"R","v":28},{"x":"JS","y":"Python","v":12},{"x":"JS","y":"JS","v":0},{"x":"JS","y":"SQL","v":18},{"x":"JS","y":"R","v":5},{"x":"SQL","y":"Python","v":45},{"x":"SQL","y":"JS","v":18},{"x":"SQL","y":"SQL","v":0},{"x":"SQL","y":"R","v":32},{"x":"R","y":"Python","v":28},{"x":"R","y":"JS","v":5},{"x":"R","y":"SQL","v":32},{"x":"R","y":"R","v":0}]},{"n":"Circular dendrogram","f":"relationship","d":"A radial tree — each ring is a deeper level.","u":["Taxonomy trees","File system hierarchy","Cluster analysis"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",0,"Leaf node size"],["Color","Categorical / Numeric",0,"Node color"],["Labels","Any",0,"Node labels"]],"w":[["Kingdom","Phylum","Class","Species"],["Animalia","Chordata","Mammalia","Lion"],["Animalia","Chordata","Aves","Eagle"],["Plantae","Tracheophyta","Liliopsida","Tulip"]],"fn":"rCircDendro","r":{"nodes":[{"l":"Root","depth":0,"angle":0},{"l":"Animal","depth":1,"angle":-1.05},{"l":"Plant","depth":1,"angle":1.05},{"l":"Mammal","depth":2,"angle":-1.8},{"l":"Bird","depth":2,"angle":-0.3},{"l":"Flower","depth":2,"angle":0.3},{"l":"Tree","depth":2,"angle":1.8}],"edges":[{"d1":0,"a1":0,"d2":1,"a2":-1.05},{"d1":0,"a1":0,"d2":1,"a2":1.05},{"d1":1,"a1":-1.05,"d2":2,"a2":-1.8},{"d1":1,"a1":-1.05,"d2":2,"a2":-0.3},{"d1":1,"a1":1.05,"d2":2,"a2":0.3},{"d1":1,"a1":1.05,"d2":2,"a2":1.8}]}},{"n":"Linear dendrogram","f":"relationship","d":"A left-to-right tree of nested groups.","u":["Cluster analysis results","Biological classification","Org structures"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",0,"Node size"],["Color","Categorical / Numeric",0,"Color"],["Labels","Any",0,"Labels"]],"w":[["Continent","Country","City"],["Europe","Germany","Berlin"],["Europe","France","Paris"],["Asia","Japan","Tokyo"]],"fn":"rLinDendro","r":[{"l":"World","x":0,"y":0.5,"p":null,"leaf":false},{"l":"Europe","x":0.3,"y":0.28,"p":0,"leaf":false},{"l":"Asia","x":0.3,"y":0.72,"p":0,"leaf":false},{"l":"Germany","x":0.6,"y":0.2,"p":1,"leaf":false},{"l":"France","x":0.6,"y":0.38,"p":1,"leaf":false},{"l":"Japan","x":0.6,"y":0.62,"p":2,"leaf":false},{"l":"India","x":0.6,"y":0.82,"p":2,"leaf":false},{"l":"Berlin","x":1,"y":0.14,"p":3,"leaf":true},{"l":"Munich","x":1,"y":0.26,"p":3,"leaf":true},{"l":"Paris","x":1,"y":0.38,"p":4,"leaf":true},{"l":"Tokyo","x":1,"y":0.62,"p":5,"leaf":true},{"l":"Osaka","x":1,"y":0.72,"p":5,"leaf":true},{"l":"Delhi","x":1,"y":0.82,"p":6,"leaf":true},{"l":"Mumbai","x":1,"y":0.92,"p":6,"leaf":true}]},{"n":"Pie chart","f":"composition","d":"Slices show shares of a whole. Best under five categories.","u":["Market share breakdown","Budget allocation","Survey response distribution"],"e":[["Slices","Categorical",1,"Category names"],["Size","Numeric",1,"Value per slice"],["Color","Categorical",0,"Color per slice"],["Labels","Any",0,"Slice labels"]],"w":[["Browser","Market Share (%)"],["Chrome","65"],["Safari","19"],["Edge","8"],["Firefox","4"],["Other","4"]],"fn":"rPie","r":[{"l":"Chrome","v":65},{"l":"Safari","v":19},{"l":"Edge","v":8},{"l":"Firefox","v":4},{"l":"Other","v":4}]},{"n":"Streamgraph","f":"composition","d":"A stacked area with a flowing baseline — mix over time.","u":["Music genre popularity by year","Topic volume trends","Product mix changes"],"e":[["X Axis","Date / Numeric",1,"Continuous axis — usually time"],["Streams","Categorical",1,"Category — one stream per value"],["Size","Numeric",1,"Stream height"],["Color","Categorical",0,"Stream color"],["Series","Categorical",0,"Small multiples"]],"w":[["Year","Genre","Streams (M)"],["2019","Pop","420"],["2019","Hip-Hop","310"],["2020","Hip-Hop","520"]],"fn":"rStream","r":[{"x":2018,"ls":[{"g":"Pop","v":420},{"g":"Hip-Hop","v":310},{"g":"Rock","v":280},{"g":"R&B","v":180}]},{"x":2019,"ls":[{"g":"Pop","v":480},{"g":"Hip-Hop","v":390},{"g":"Rock","v":250},{"g":"R&B","v":210}]},{"x":2020,"ls":[{"g":"Pop","v":460},{"g":"Hip-Hop","v":520},{"g":"Rock","v":220},{"g":"R&B","v":240}]},{"x":2021,"ls":[{"g":"Pop","v":490},{"g":"Hip-Hop","v":580},{"g":"Rock","v":200},{"g":"R&B","v":270}]},{"x":2022,"ls":[{"g":"Pop","v":510},{"g":"Hip-Hop","v":640},{"g":"Rock","v":185},{"g":"R&B","v":290}]}]},{"n":"Sunburst diagram","f":"composition","d":"Rings show hierarchy; arc length equals value.","u":["File system structure","Org chart with headcount","Budget hierarchy"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",0,"Segment arc length"],["Color","Categorical / Numeric",0,"Segment color"],["Labels","Any",0,"Labels"]],"w":[["Division","Dept","Team","Headcount"],["Product","Eng","Frontend","12"],["Product","Eng","Backend","18"],["Product","Design","UX","8"]],"fn":"rSunburst","r":{"v":1000,"ch":[{"l":"Product","v":580,"ch":[{"l":"Eng","v":320,"ch":[{"l":"Front","v":120},{"l":"Back","v":200}]},{"l":"Design","v":160,"ch":[{"l":"UX","v":80},{"l":"Brand","v":80}]},{"l":"PM","v":100,"ch":[{"l":"Growth","v":60},{"l":"Core","v":40}]}]},{"l":"Operations","v":280,"ch":[{"l":"Support","v":140,"ch":[{"l":"T1","v":90},{"l":"T2","v":50}]},{"l":"Infra","v":140,"ch":[{"l":"Cloud","v":80},{"l":"Sec","v":60}]}]},{"l":"Sales","v":140,"ch":[{"l":"Ent","v":90},{"l":"SMB","v":50}]}]}},{"n":"Treemap","f":"composition","d":"Nested rectangles — area equals value. Space-efficient.","u":["Portfolio breakdown by sector","File sizes on disk","Sales by category and sub-category"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",1,"Rectangle area"],["Color","Categorical / Numeric",0,"Rectangle color"],["Labels","Any",0,"Labels"]],"w":[["Sector","Company","Mkt Cap ($B)"],["Tech","Apple","2800"],["Tech","MSFT","2400"],["Finance","JPMorgan","430"]],"fn":"rTreemap","r":[{"l":"Apple","v":2800},{"l":"MSFT","v":2400},{"l":"Amazon","v":1600},{"l":"Alphabet","v":1900},{"l":"JPMorgan","v":430},{"l":"Tesla","v":780},{"l":"Meta","v":1100},{"l":"Nvidia","v":1200}]},{"n":"Circle packing","f":"composition","d":"Circles nested in circles — organic, less space-efficient.","u":["Tag clouds by volume","Nested budget breakdown","Topic clustering"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",0,"Circle area"],["Color","Categorical / Numeric",0,"Circle color"],["Labels","Any",0,"Labels"]],"w":[["Category","Topic","Articles"],["Science","AI/ML","340"],["Science","Physics","120"],["Web","React","240"]],"fn":"rCirclePack","r":{"l":"All","v":1000,"ch":[{"l":"AI","v":340,"ch":[{"l":"ML"},{"l":"NLP"},{"l":"CV"}]},{"l":"Web","v":280,"ch":[{"l":"React"},{"l":"Node"},{"l":"CSS"}]},{"l":"Data","v":240,"ch":[{"l":"SQL"},{"l":"NoSQL"},{"l":"Viz"}]},{"l":"DevOps","v":140,"ch":[{"l":"Docker"},{"l":"K8s"}]}]}},{"n":"Voronoi treemap","f":"composition","d":"A treemap with organic polygon cells.","u":["Alternative to treemap when rectangular layout feels too rigid"],"e":[["Hierarchy","Categorical (multiple)",1,"Multiple columns — parent to child order"],["Size","Numeric",1,"Cell area weight"],["Color","Categorical / Numeric",0,"Cell color"],["Labels","Any",0,"Labels"]],"w":[["Region","Country","GDP ($T)"],["Europe","Germany","4.1"],["Asia","China","17.7"],["Asia","Japan","4.9"]],"fn":"rVoronoiTM","r":[{"l":"Germany","v":4.1},{"l":"France","v":2.9},{"l":"UK","v":2.7},{"l":"China","v":17.7},{"l":"Japan","v":4.9}]},{"n":"Sankey diagram","f":"flow","d":"Band width shows what flows between nodes.","u":["Energy flows","Budget allocation flows","Conversion funnels"],"e":[["Source","Categorical",1,"Origin node"],["Target","Categorical",1,"Destination node"],["Size","Numeric",1,"Flow volume — band width"],["Color","Categorical",0,"Band color"],["Labels","Any",0,"Node labels"]],"w":[["Source","Target","MW"],["Coal","Generation","1200"],["Gas","Generation","820"],["Generation","Residential","980"]],"fn":"rSankey","r":{"nodes":[{"l":"Coal","v":1200},{"l":"Gas","v":820},{"l":"Solar","v":400},{"l":"Generation","v":2420},{"l":"Residential","v":980},{"l":"Industrial","v":820},{"l":"Losses","v":620}],"links":[{"s":0,"t":3,"v":1200},{"s":1,"t":3,"v":820},{"s":2,"t":3,"v":400},{"s":3,"t":4,"v":980},{"s":3,"t":5,"v":820},{"s":3,"t":6,"v":620}]}},{"n":"Alluvial diagram","f":"flow","d":"Ribbons show how the same items regroup across stages.","u":["Titanic survival by class/sex","Customer journey stages","Political affiliation shifts"],"e":[["Steps","Categorical (multiple)",1,"Multiple columns — each is one vertical stage"],["Size","Numeric",0,"Flow weight (defaults to record count)"],["Color","Categorical",0,"Flow / node color"],["Labels","Any",0,"Node labels"]],"w":[["Class","Sex","Survived","Count"],["1st","Female","Yes","140"],["1st","Male","Yes","57"],["3rd","Male","No","300"]],"fn":"rAlluvial","r":{"stages":[{"l":"Class","nodes":[{"l":"1st","v":216},{"l":"2nd","v":184},{"l":"3rd","v":189}]},{"l":"Sex","nodes":[{"l":"Male","v":445},{"l":"Female","v":144}]},{"l":"Survived","nodes":[{"l":"No","v":392},{"l":"Yes","v":197}]}],"links":[{"fs":0,"fi":0,"ts":1,"ti":0,"v":166},{"fs":0,"fi":0,"ts":1,"ti":1,"v":50},{"fs":0,"fi":1,"ts":1,"ti":0,"v":134},{"fs":0,"fi":1,"ts":1,"ti":1,"v":50},{"fs":0,"fi":2,"ts":1,"ti":0,"v":145},{"fs":0,"fi":2,"ts":1,"ti":1,"v":44},{"fs":1,"fi":0,"ts":2,"ti":0,"v":374},{"fs":1,"fi":0,"ts":2,"ti":1,"v":71},{"fs":1,"fi":1,"ts":2,"ti":0,"v":18},{"fs":1,"fi":1,"ts":2,"ti":1,"v":126}]}}];
+    var FAML = { comparison: "COMPARISON", distribution: "DISTRIBUTION", relationship: "RELATIONSHIP",
+      composition: "COMPOSITION", flow: "FLOW" };
+    var FC = { comparison: "#0A84FF", distribution: "#FF9F0A", relationship: "#30B0C7",
+      composition: "#AF52DE", flow: "#34C759" };
+    var G2 = "#AEB4BE", INKC = "#1C1C1E";
+    var PF_DEF = { comparison: "ta", distribution: "a", relationship: "a", composition: "a", flow: "a" };
+    var PF = { "Bar chart": "tas", "Line chart": "ots", "Area chart": "ot", "Bump chart": "s",
+      "Gantt chart": "t", "Pie chart": "s", "Horizon graph": "oa", "Treemap": "as",
+      "Stacked bar chart": "as" };
+    var PIT = {
+      "Pie chart": "More than five slices and it’s soup — reach for a bar or a treemap.",
+      "Radar chart": "Axis order silently reshapes the figure; ranks lie here.",
+      "Stacked area chart": "Only the bottom band sits on a flat baseline — the middles are unreadable.",
+      "Bubble / scatter plot": "Encode area, not radius: double the value must look double.",
+      "Sankey diagram": "Crossing spaghetti past ~8 nodes — aggregate before you draw.",
+      "Chord diagram": "Beautiful, unreadable beyond a handful of groups.",
+      "Streamgraph": "Shape over values: fine for vibes, poor for reading numbers.",
+      "Voronoi treemap": "Organic cells resist comparison — use when identity beats magnitude."
+    };
+
+    function A2(hex, a) {
+      return "rgba(" + parseInt(hex.slice(1, 3), 16) + "," + parseInt(hex.slice(3, 5), 16) + "," +
+        parseInt(hex.slice(5, 7), 16) + "," + a + ")";
+    }
+    function gsvg(box) {
+      var s = S("svg", { viewBox: "0 0 120 72" });
+      s.setAttribute("aria-hidden", "true");
+      box.appendChild(s);
+      return s;
+    }
+    function ln(s, pts, col, w, cls, dash) {
+      var e = S("polyline", { points: pts.map(function (p) { return p[0] + "," + p[1]; }).join(" "),
+        fill: "none", stroke: col, "stroke-width": w || 2, "stroke-linecap": "round",
+        "stroke-linejoin": "round" });
+      if (dash) { e.setAttribute("stroke-dasharray", dash); }
+      if (cls) { e.setAttribute("class", cls); e.setAttribute("pathLength", "1"); }
+      s.appendChild(e);
+      return e;
+    }
+    function pth(s, d, o) {
+      o = o || {};
+      var e = S("path", { d: d, fill: o.f || "none" });
+      if (o.st) { e.setAttribute("stroke", o.st); e.setAttribute("stroke-width", o.w || 2);
+        e.setAttribute("stroke-linecap", o.cap || "butt"); e.setAttribute("stroke-linejoin", "round"); }
+      if (o.dash) { e.setAttribute("stroke-dasharray", o.dash); }
+      if (o.cls) { e.setAttribute("class", o.cls); e.setAttribute("pathLength", "1"); }
+      s.appendChild(e);
+      return e;
+    }
+    function rc(s, x, y, w0, h0, f, rx, cls) {
+      var e = S("rect", { x: x, y: y, width: w0, height: h0, rx: rx == null ? 3 : rx, fill: f });
+      if (cls) { e.setAttribute("class", cls); }
+      s.appendChild(e);
+    }
+    function ci(s, x, y, r, f, st, sw) {
+      var a = { cx: x, cy: y, r: r, fill: f || "none" };
+      if (st) { a.stroke = st; a["stroke-width"] = sw || 1.6; }
+      s.appendChild(S("circle", a));
+    }
+    function arcP(cx, cy, r, a0, a1) {
+      function P(a) { return [(cx + r * Math.cos(a)).toFixed(1), (cy + r * Math.sin(a)).toFixed(1)]; }
+      var s0 = P(a0), e0 = P(a1), lg = (a1 - a0) > Math.PI ? 1 : 0;
+      return "M" + s0 + " A" + r + "," + r + " 0 " + lg + " 1 " + e0;
+    }
+
+    var DRAW = [
+      function (s, fc) { [[14,26],[34,14],[54,22],[74,8],[94,18]].forEach(function (p, i) {
+        rc(s, p[0], 10 + p[1], 13, 52 - p[1], i === 3 ? fc : A2(fc, 0.45 + i * 0.08), 4, "gp"); }); },
+      function (s, fc) { [0, 1, 2].forEach(function (g) { [0.95, 0.55, 0.3].forEach(function (a, i) {
+        var hh = 26 + ((g * 7 + i * 11) % 22);
+        rc(s, 14 + g * 34 + i * 9, 62 - hh, 7, hh, A2(fc, a), 2.5, "gp"); }); }); },
+      function (s, fc) { [0, 1, 2, 3].forEach(function (b) {
+        var y = 62, hs = [16 + b * 3, 13, 10 - b];
+        [0.95, 0.5, 0.28].forEach(function (a, i) { y -= hs[i]; rc(s, 16 + b * 24, y, 14, hs[i], A2(fc, a), 2, "gp"); }); }); },
+      function (s, fc) { var p = [[12,54],[32,42],[52,48],[72,28],[92,32],[108,16]];
+        ln(s, p, fc, 2.4, "gd"); ci(s, 108, 16, 3.4, fc); },
+      function (s, fc) { var p = [[12,52],[34,40],[56,44],[78,24],[108,18]];
+        pth(s, "M" + p.map(function (q) { return q.join(","); }).join(" L") + " L108,62 L12,62 Z", { f: A2(fc, 0.2) });
+        ln(s, p, fc, 2.4, "gd"); },
+      function (s, fc) { var base = [[12,62],[40,62],[70,62],[108,62]];
+        [[0.55, [40,46,50,34]], [0.35, [26,34,36,22]], [0.2, [16,20,24,12]]].forEach(function (band) {
+          var pts = base.map(function (b, i) { return b[0] + "," + (62 - band[1][i]); }).join(" L");
+          pth(s, "M12,62 L" + pts + " L108,62 Z", { f: A2(fc, band[0]) }); });
+        ln(s, base.map(function (b, i) { return [b[0], 62 - [16,20,24,12][i]]; }), fc, 2, "gd"); },
+      function (s, fc) { [[[12,16],[50,40],[108,14]], [[12,34],[50,14],[108,38]], [[12,52],[50,56],[108,54]]]
+        .forEach(function (p, i) { ln(s, p, A2(fc, 1 - i * 0.3), 2.4, "gd");
+          ci(s, 108, p[2][1], 3, A2(fc, 1 - i * 0.3)); }); },
+      function (s, fc) { var cx = 60, cy = 37;
+        [26, 17, 9].forEach(function (r) { var pts = [];
+          for (var k = 0; k < 5; k++) { var a = -Math.PI / 2 + k * 2 * Math.PI / 5;
+            pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); }
+          pts.push(pts[0]); ln(s, pts, G2, 1); });
+        var vals = [24, 15, 22, 10, 19], pv = [];
+        for (var k2 = 0; k2 < 5; k2++) { var a2 = -Math.PI / 2 + k2 * 2 * Math.PI / 5;
+          pv.push([cx + vals[k2] * Math.cos(a2), cy + vals[k2] * Math.sin(a2)]); }
+        pv.push(pv[0]);
+        pth(s, "M" + pv.map(function (q) { return q[0].toFixed(1) + "," + q[1].toFixed(1); }).join(" L") + "Z",
+          { f: A2(fc, 0.25), st: fc, w: 2, cls: "gd" }); },
+      function (s, fc) { [[14,10,40],[30,22,52],[48,34,34],[66,46,42]].forEach(function (r, i) {
+        rc(s, r[0], r[1], r[2], 8, A2(fc, 0.4 + i * 0.15), 4, "gp"); });
+        s.appendChild(S("line", { x1: 72, x2: 72, y1: 6, y2: 60, stroke: INKC, "stroke-width": 1.4,
+          "stroke-dasharray": "3 3", opacity: 0.55 })); },
+      function (s, fc) { s.appendChild(S("line", { x1: 12, x2: 108, y1: 37, y2: 37, stroke: G2, "stroke-width": 1 }));
+        [[18,37],[26,31],[26,43],[34,37],[42,26],[42,48],[50,33],[50,41],[58,37],[66,29],[66,45],[74,37],[82,34],[90,40],[98,37]]
+        .forEach(function (p, i) { ci(s, p[0], p[1], 3.1, A2(fc, 0.45 + (i % 4) * 0.14)); }); },
+      function (s, fc) { [[24, 20, 46, 12, 58], [60, 14, 40, 8, 52], [96, 24, 50, 18, 62]].forEach(function (b) {
+        s.appendChild(S("line", { x1: b[0], x2: b[0], y1: b[3], y2: b[4], stroke: G2, "stroke-width": 1.6 }));
+        rc(s, b[0] - 8, b[1], 16, b[2] - b[1], A2(fc, 0.3), 3);
+        s.appendChild(S("rect", { x: b[0] - 8, y: b[1], width: 16, height: b[2] - b[1], rx: 3,
+          fill: "none", stroke: fc, "stroke-width": 1.6 }));
+        s.appendChild(S("line", { x1: b[0] - 8, x2: b[0] + 8, y1: (b[1] + b[2]) / 2 + 2, y2: (b[1] + b[2]) / 2 + 2,
+          stroke: fc, "stroke-width": 2 })); }); },
+      function (s, fc) { pth(s, "M60,8 C74,20 78,26 74,37 C78,48 74,56 60,64 C46,56 42,48 46,37 C42,26 46,20 60,8 Z",
+        { f: A2(fc, 0.3), st: fc, w: 1.8, cls: "gd" });
+        s.appendChild(S("line", { x1: 60, x2: 60, y1: 8, y2: 64, stroke: INKC, "stroke-width": 1, opacity: 0.4 })); },
+      function (s, fc) { [0, 1, 2].forEach(function (r) { var y = 12 + r * 19;
+        pth(s, "M12," + (y + 13) + " L30," + (y + 4 + r) + " L54," + (y + 10) + " L80," + (y + 2) +
+          " L108," + (y + 9) + " L108," + (y + 13) + " Z", { f: A2(fc, 0.55) });
+        pth(s, "M12," + (y + 13) + " L40," + (y + 8) + " L70," + (y + 12) + " L108," + (y + 6) +
+          " L108," + (y + 13) + " Z", { f: A2(fc, 0.25) });
+        s.appendChild(S("line", { x1: 12, x2: 108, y1: y + 13, y2: y + 13, stroke: G2, "stroke-width": 0.8 })); }); },
+      function (s, fc) { function hex(cx, cy, a) { var pts = [];
+          for (var k = 0; k < 6; k++) { var an = Math.PI / 6 + k * Math.PI / 3;
+            pts.push((cx + 8 * Math.cos(an)).toFixed(1) + "," + (cy + 8 * Math.sin(an)).toFixed(1)); }
+          pth(s, "M" + pts.join(" L") + "Z", a > 0 ? { f: A2(fc, a) } : { st: G2, w: 1 }); }
+        var A0 = [0.15, 0.6, 0.3, 0, 0.45, 0.9, 0.55, 0.2, 0, 0.35, 0.7, 0.25];
+        var k3 = 0;
+        for (var row = 0; row < 3; row++) { for (var c = 0; c < 4; c++) {
+          hex(26 + c * 24 + (row % 2) * 12, 15 + row * 21, A0[k3++]); } } },
+      function (s, fc) { pth(s, "M28,44 C22,28 40,14 60,16 C84,18 100,30 96,44 C92,58 66,64 48,58 C36,54 32,52 28,44 Z", { st: A2(fc, 0.4), w: 1.6 });
+        pth(s, "M40,42 C38,32 48,24 62,26 C78,28 88,34 84,44 C80,52 62,56 52,52 Z", { st: A2(fc, 0.7), w: 1.8 });
+        pth(s, "M52,40 C52,34 58,32 64,34 C72,36 74,40 70,44 C66,48 56,46 52,40 Z", { f: A2(fc, 0.35), st: fc, w: 1.8, cls: "gd" }); },
+      function (s, fc) { var pts = [[22,50],[30,22],[52,12],[80,16],[100,34],[92,56],[58,60],[34,58]];
+        pth(s, "M" + pts.map(function (q) { return q.join(","); }).join(" L") + "Z",
+          { st: fc, w: 1.8, dash: "5 4", cls: "gd" });
+        pts.concat([[50,34],[66,40],[58,26],[76,46]]).forEach(function (p) { ci(s, p[0], p[1], 3, A2(fc, 0.75)); }); },
+      function (s, fc) { pth(s, "M12,26 L44,10 M44,10 L78,20 M78,20 L108,8 M12,26 L38,42 M38,42 L44,10 M38,42 L70,48 M70,48 L78,20 M70,48 L108,42 M108,42 L108,8 M12,26 L12,62 L46,62 M46,62 L38,42 M46,62 L84,60 M84,60 L70,48 M84,60 L108,62 L108,42",
+        { st: G2, w: 1.2 });
+        [[44,10],[78,20],[38,42],[70,48],[46,62],[84,60]].forEach(function (p) { ci(s, p[0], p[1], 3.2, fc); }); },
+      function (s, fc) { [[22,48,4],[38,28,6],[56,40,9],[76,20,5],[92,44,7],[104,26,3.5],[46,14,3]]
+        .forEach(function (p, i) { ci(s, p[0], p[1], p[2], A2(fc, 0.35 + (i % 3) * 0.2), fc, 1.2); }); },
+      function (s, fc) { s.appendChild(S("line", { x1: 12, x2: 108, y1: 58, y2: 58, stroke: G2, "stroke-width": 1.4 }));
+        var nx = [20, 46, 72, 100];
+        pth(s, arcP(33, 58, 13, Math.PI, 2 * Math.PI), { st: A2(fc, 0.85), w: 2, cls: "gd" });
+        pth(s, arcP(60, 58, 40, Math.PI, 2 * Math.PI), { st: A2(fc, 0.45), w: 2, cls: "gd" });
+        pth(s, arcP(86, 58, 14, Math.PI, 2 * Math.PI), { st: A2(fc, 0.65), w: 2, cls: "gd" });
+        nx.forEach(function (x) { ci(s, x, 58, 3.4, fc); }); },
+      function (s, fc) { ci(s, 60, 37, 27, "none", G2, 1.4);
+        pth(s, "M40,19 C56,34 64,34 82,22 A27,27 0 0 1 86,48 C66,38 54,40 38,52 A27,27 0 0 1 40,19 Z", { f: A2(fc, 0.3) });
+        pth(s, "M52,62 C58,48 64,48 70,62 A27,27 0 0 1 52,62 Z", { f: A2(fc, 0.55) }); },
+      function (s, fc) { [24, 60, 96].forEach(function (x) {
+          s.appendChild(S("line", { x1: x, x2: x, y1: 10, y2: 62, stroke: G2, "stroke-width": 1.4 })); });
+        [[14, 40, 22], [30, 18, 46], [52, 30, 34]].forEach(function (p, i) {
+          ln(s, [[24, p[0]], [60, p[1]], [96, p[2]]], A2(fc, 0.9 - i * 0.25), 2, "gd"); }); },
+      function (s, fc) { for (var r = 0; r < 4; r++) { for (var c = 0; c < 5; c++) {
+        var a = ((r * 5 + c * 3) % 7) / 7;
+        rc(s, 15 + c * 19, 9 + r * 14.5, 15, 11, a < 0.12 ? "rgba(120,120,128,0.08)" : A2(fc, 0.15 + a * 0.75), 2.5); } } },
+      function (s, fc) { var cx = 60, cy = 37; ci(s, cx, cy, 3.5, fc);
+        for (var k = 0; k < 8; k++) { var a = k * Math.PI / 4 + Math.PI / 8;
+          var m = [cx + 15 * Math.cos(a), cy + 15 * Math.sin(a)];
+          s.appendChild(S("line", { x1: cx, x2: m[0], y1: cy, y2: m[1], stroke: G2, "stroke-width": 1.1 }));
+          [-0.22, 0.22].forEach(function (da) { var e = [cx + 27 * Math.cos(a + da), cy + 27 * Math.sin(a + da)];
+            s.appendChild(S("line", { x1: m[0], x2: e[0], y1: m[1], y2: e[1], stroke: G2, "stroke-width": 1 }));
+            ci(s, e[0], e[1], 2.1, A2(fc, 0.8)); }); } },
+      function (s, fc) { pth(s, "M14,36 L30,36 M30,36 L30,18 L46,18 M30,36 L30,54 L46,54 M46,18 L46,10 L62,10 M46,18 L46,26 L62,26 M46,54 L46,46 L62,46 M46,54 L46,62 L62,62",
+        { st: G2, w: 1.3 });
+        ci(s, 14, 36, 3, fc);
+        [[62,10],[62,26],[62,46],[62,62]].forEach(function (p) { ci(s, p[0], p[1], 2.6, A2(fc, 0.85)); });
+        [[46,18],[46,54]].forEach(function (p) { ci(s, p[0], p[1], 2.4, A2(fc, 0.5)); }); },
+      function (s, fc) { var cx = 60, cy = 37, R = 26;
+        [[-Math.PI / 2, 0.7, 1], [0.7 - Math.PI / 2, 2.6, 0.55], [2.6 - Math.PI / 2, 2 * Math.PI - Math.PI / 2, 0.28]]
+        .forEach(function (sg) { pth(s, arcP(cx, cy, R - 6, sg[0], sg[1]), { st: A2(fc, sg[2]), w: 11 }); });
+        ci(s, cx, cy, 10, "#FFFFFF"); },
+      function (s, fc) { [[0.5, "M12,30 C34,18 50,40 70,30 C90,20 100,30 108,26 L108,40 C92,46 76,34 56,44 C40,50 24,42 12,44 Z"],
+        [0.3, "M12,44 C24,42 40,50 56,44 C76,34 92,46 108,40 L108,52 C90,58 70,50 50,56 C34,60 22,54 12,56 Z"],
+        [0.75, "M12,18 C30,10 52,26 72,18 C90,12 100,20 108,16 L108,26 C100,30 90,20 70,30 C50,40 34,18 12,30 Z"]]
+        .forEach(function (b) { pth(s, b[1], { f: A2(fc, b[0]) }); }); },
+      function (s, fc) { var cx = 60, cy = 40;
+        [[-2.6, -0.9, 0.85], [-0.9, 0.5, 0.5]].forEach(function (sg) {
+          pth(s, arcP(cx, cy, 12, sg[0], sg[1]), { st: A2(fc, sg[2]), w: 9 }); });
+        [[-2.8, -2.0, 0.65], [-2.0, -1.2, 0.4], [-1.2, -0.3, 0.8], [-0.3, 0.6, 0.3]].forEach(function (sg) {
+          pth(s, arcP(cx, cy, 24, sg[0], sg[1]), { st: A2(fc, sg[2]), w: 9 }); }); },
+      function (s, fc) { rc(s, 12, 8, 54, 34, A2(fc, 0.8), 3); rc(s, 12, 45, 54, 19, A2(fc, 0.4), 3);
+        rc(s, 69, 8, 39, 22, A2(fc, 0.55), 3); rc(s, 69, 33, 39, 17, A2(fc, 0.3), 3);
+        rc(s, 69, 53, 39, 11, A2(fc, 0.18), 3); },
+      function (s, fc) { ci(s, 60, 37, 29, "none", G2, 1.5);
+        ci(s, 47, 30, 13, A2(fc, 0.4)); ci(s, 72, 28, 9, A2(fc, 0.65));
+        ci(s, 68, 48, 11, A2(fc, 0.3)); ci(s, 48, 51, 6, A2(fc, 0.8)); ci(s, 78, 40, 4, A2(fc, 0.5)); },
+      function (s, fc) { pth(s, "M18,14 Q60,4 102,14 Q116,37 102,60 Q60,70 18,60 Q4,37 18,14 Z", { st: G2, w: 1.4 });
+        pth(s, "M18,14 Q60,4 102,14 L74,34 L44,30 Z", { f: A2(fc, 0.55) });
+        pth(s, "M18,14 Q4,37 18,60 L44,48 L44,30 Z", { f: A2(fc, 0.3) });
+        pth(s, "M18,60 Q60,70 102,60 L74,50 L44,48 Z", { f: A2(fc, 0.7) });
+        pth(s, "M102,14 Q116,37 102,60 L74,50 L74,34 Z", { f: A2(fc, 0.42) }); },
+      function (s, fc) { rc(s, 12, 10, 9, 26, fc, 3); rc(s, 12, 42, 9, 20, A2(fc, 0.55), 3);
+        rc(s, 99, 8, 9, 16, A2(fc, 0.8), 3); rc(s, 99, 30, 9, 20, A2(fc, 0.5), 3); rc(s, 99, 56, 9, 8, A2(fc, 0.3), 3);
+        pth(s, "M21,12 C60,12 60,10 99,10 L99,22 C60,22 60,30 21,26 Z", { f: A2(fc, 0.35) });
+        pth(s, "M21,28 C64,30 64,34 99,34 L99,46 C64,46 64,40 21,36 Z", { f: A2(fc, 0.22) });
+        pth(s, "M21,46 C60,48 66,58 99,58 L99,63 C66,63 60,58 21,60 Z", { f: A2(fc, 0.3) }); },
+      function (s, fc) { [16, 60, 104].forEach(function (x, col) {
+          rc(s, x - 5, 10, 10, 22, A2(fc, 0.85), 3); rc(s, x - 5, 38, 10, 24 - col * 3, A2(fc, 0.45), 3); });
+        pth(s, "M21,14 C40,14 40,16 55,16 L55,26 C40,26 40,24 21,26 Z", { f: A2(fc, 0.3) });
+        pth(s, "M21,44 C40,42 40,20 55,22 L55,30 C42,30 42,52 21,54 Z", { f: A2(fc, 0.2) });
+        pth(s, "M65,16 C84,16 84,42 99,42 L99,52 C82,52 84,26 65,26 Z", { f: A2(fc, 0.22) });
+        pth(s, "M65,44 C84,44 84,12 99,14 L99,22 C86,22 86,54 65,54 Z", { f: A2(fc, 0.3) }); }
+    ];
+
+    /* ---- detail renderers: real data, real axes ---- */
+    var VW = 340, VH = 230, PAD = { l: 40, r: 12, t: 16, b: 30 };
+    function txm(s, x, y, str, size, fill, anchor) {
+      var t0 = S("text", { x: x, y: y, "font-family": "'IBM Plex Mono',monospace",
+        "font-size": size || 8.5, fill: fill || "#69707B" });
+      if (anchor) { t0.setAttribute("text-anchor", anchor); }
+      t0.textContent = str;
+      s.appendChild(t0);
+      return t0;
+    }
+    function kfmt(v) {
+      if (Math.abs(v) >= 1000) { var k = v / 1000; return (k >= 10 ? Math.round(k) : Math.round(k * 10) / 10) + "k"; }
+      return String(Math.round(v * 10) / 10);
+    }
+    function frame(s, o) {
+      var x0 = PAD.l, y0 = PAD.t, w0 = VW - PAD.l - PAD.r, h0 = VH - PAD.t - PAD.b;
+      var yMin = o.yMin || 0, yMax = o.yMax;
+      for (var r0 = 0; r0 <= 3; r0++) {
+        var yy = y0 + h0 - (r0 / 3) * h0;
+        s.appendChild(S("line", { x1: x0, x2: x0 + w0, y1: yy, y2: yy, stroke: "rgba(60,60,67,0.12)",
+          "stroke-width": 1, "stroke-dasharray": r0 === 0 ? "" : "1 4" }));
+      }
+      txm(s, x0 - 5, y0 + 4, o.yFmt ? o.yFmt(yMax) : kfmt(yMax), 8, "#69707B", "end");
+      txm(s, x0 - 5, y0 + h0 + 3, o.yFmt ? o.yFmt(yMin) : kfmt(yMin), 8, "#69707B", "end");
+      if (o.xlabs) {
+        var nx = o.xlabs.length;
+        o.xlabs.forEach(function (L, i) {
+          if (L == null) { return; }
+          txm(s, x0 + (i + 0.5) * (w0 / nx), y0 + h0 + 13, L, 8, "#69707B", "middle");
+        });
+      }
+      if (o.xT) { txm(s, x0 + w0 / 2, VH - 3, String(o.xT).toUpperCase(), 7.5, "#8A9099", "middle"); }
+      if (o.yT) { txm(s, x0 - 5, y0 - 7, String(o.yT).toUpperCase(), 7.5, "#8A9099", "end"); }
+      return { x0: x0, y0: y0, w: w0, h: h0,
+        sx: function (i, n1) { return x0 + (i + 0.5) * (w0 / n1); },
+        sy: function (v) { return y0 + h0 - ((v - yMin) / (yMax - yMin || 1)) * h0; } };
+    }
+    function legend(s, items, y) {
+      var x = VW - PAD.r;
+      items.slice().reverse().forEach(function (it) {
+        txm(s, x, y || 10, it[0], 8, "#3A3F49", "end");
+        var bb = it[0].length * 5 + 4;
+        s.appendChild(S("rect", { x: x - bb - 11, y: (y || 10) - 6.5, width: 8, height: 8, rx: 2.5, fill: it[1] }));
+        x -= bb + 22;
+      });
+    }
+    function hdr(w0, i) { return (w0 && w0[0] && w0[0][i]) || null; }
+    function hx(s, x, y, str, size, fill, anchor) {
+      var t0 = txm(s, x, y, str, size, fill, anchor);
+      t0.setAttribute("stroke", "#FFFFFF");
+      t0.setAttribute("stroke-width", 3);
+      t0.setAttribute("paint-order", "stroke");
+      return t0;
+    }
+    function quart(a, q) {
+      var p = (a.length - 1) * q, lo = Math.floor(p);
+      return a[lo] + (a[Math.min(lo + 1, a.length - 1)] - a[lo]) * (p - lo);
+    }
+
+    var DET = {
+      rBar: function (s, d, fc, w0) {
+        var mx = Math.max.apply(null, d.map(function (r0) { return r0.v; }));
+        var F = frame(s, { yMax: mx * 1.15, xlabs: d.map(function (r0) { return r0.l; }),
+          yT: hdr(w0, 1), xT: hdr(w0, 0) });
+        d.forEach(function (r0, i) {
+          var bw = (F.w / d.length) * 0.56, x = F.sx(i, d.length) - bw / 2, y = F.sy(r0.v);
+          s.appendChild(S("rect", { x: x, y: y, width: bw, height: F.y0 + F.h - y, rx: 5, fill: A2(fc, 0.85) }));
+          txm(s, x + bw / 2, y - 5, r0.v, 8, "#1C1C1E", "middle");
+        });
+      },
+      rGroupedBar: function (s, d, fc, w0) {
+        var G = d[0].gs.map(function (g0) { return g0.g; });
+        var mx = 0;
+        d.forEach(function (r0) { r0.gs.forEach(function (g0) { mx = Math.max(mx, g0.v); }); });
+        var F = frame(s, { yMax: mx * 1.15, xlabs: d.map(function (r0) { return r0.x; }), yT: hdr(w0, 2) });
+        var al = [0.95, 0.6, 0.32];
+        d.forEach(function (r0, i) {
+          var slot = F.w / d.length, gw = slot * 0.62 / G.length;
+          r0.gs.forEach(function (g0, j) {
+            var x = F.sx(i, d.length) - (slot * 0.31) + j * gw;
+            s.appendChild(S("rect", { x: x, y: F.sy(g0.v), width: gw - 2, height: F.y0 + F.h - F.sy(g0.v),
+              rx: 3, fill: A2(fc, al[j]) }));
+          });
+        });
+        legend(s, G.map(function (g0, j) { return [g0, A2(fc, al[j])]; }));
+      },
+      rStackedBar: function (s, d, fc, w0) {
+        var K = d[0].ss.map(function (x0) { return x0.s; });
+        var mx = Math.max.apply(null, d.map(function (r0) {
+          return r0.ss.reduce(function (a, b) { return a + b.v; }, 0); }));
+        var F = frame(s, { yMax: mx * 1.12, xlabs: d.map(function (r0) { return r0.x; }), yT: hdr(w0, 2) });
+        var al = [0.95, 0.58, 0.3];
+        d.forEach(function (r0, i) {
+          var bw = (F.w / d.length) * 0.5, x = F.sx(i, d.length) - bw / 2, acc = 0;
+          r0.ss.forEach(function (sg, j) {
+            var y1 = F.sy(acc), y2 = F.sy(acc + sg.v);
+            s.appendChild(S("rect", { x: x, y: y2, width: bw, height: y1 - y2, rx: 2, fill: A2(fc, al[j % 3]) }));
+            acc += sg.v;
+          });
+        });
+        legend(s, K.map(function (k0, j) { return [k0, A2(fc, al[j % 3])]; }));
+      },
+      rLine: function (s, d, fc, w0) {
+        var G = d[0].ls.map(function (l0) { return l0.g; });
+        var mx = 0;
+        d.forEach(function (r0) { r0.ls.forEach(function (l0) { mx = Math.max(mx, l0.v); }); });
+        var F = frame(s, { yMax: mx * 1.12, xlabs: d.map(function (r0) { return r0.x; }), yT: hdr(w0, 2) });
+        var al = [1, 0.6, 0.38];
+        G.forEach(function (g0, j) {
+          var pts = d.map(function (r0, i) { return [F.sx(i, d.length), F.sy(r0.ls[j].v)]; });
+          ln(s, pts, A2(fc, al[j]), 2.2);
+          ci(s, pts[pts.length - 1][0], pts[pts.length - 1][1], 2.8, A2(fc, al[j]));
+          txm(s, pts[pts.length - 1][0] + 4, pts[pts.length - 1][1] + 3, g0, 8, "#3A3F49");
+        });
+      },
+      rArea: function (s, d, fc, w0) {
+        var mx = Math.max.apply(null, d.map(function (r0) { return r0.v; }));
+        var F = frame(s, { yMax: mx * 1.12, xlabs: d.map(function (r0) { return r0.x; }), yT: hdr(w0, 1) });
+        var pts = d.map(function (r0, i) { return [F.sx(i, d.length), F.sy(r0.v)]; });
+        pth(s, "M" + pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") +
+          " L" + pts[pts.length - 1][0].toFixed(1) + "," + (F.y0 + F.h) + " L" + pts[0][0].toFixed(1) + "," + (F.y0 + F.h) + " Z",
+          { f: A2(fc, 0.22) });
+        ln(s, pts, fc, 2.2);
+      },
+      rStackedArea: function (s, d, fc) {
+        var G = d[0].ls.map(function (l0) { return l0.g; });
+        var mx = Math.max.apply(null, d.map(function (r0) {
+          return r0.ls.reduce(function (a, b) { return a + b.v; }, 0); }));
+        var F = frame(s, { yMax: mx * 1.1, xlabs: d.map(function (r0) { return r0.x; }) });
+        var al = [0.55, 0.36, 0.22];
+        var acc = d.map(function () { return 0; });
+        G.forEach(function (g0, j) {
+          var lo = acc.slice();
+          d.forEach(function (r0, i) { acc[i] += r0.ls[j].v; });
+          var up = d.map(function (r0, i) { return [F.sx(i, d.length), F.sy(acc[i])]; });
+          var dn = d.map(function (r0, i) { return [F.sx(i, d.length), F.sy(lo[i])]; }).reverse();
+          pth(s, "M" + up.concat(dn).map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") + " Z",
+            { f: A2(fc, al[j % 3]) });
+        });
+        legend(s, G.map(function (g0, j) { return [g0, A2(fc, al[j % 3])]; }));
+      },
+      rBump: function (s, d, fc) {
+        var T = d[0].ranks.map(function (r0) { return r0.t; });
+        var NR = d.length;
+        var F = frame(s, { yMax: NR + 0.5, yMin: 0.5, xlabs: T, yFmt: function () { return ""; } });
+        d.forEach(function (it, j) {
+          var pts = it.ranks.map(function (rk, i) { return [F.sx(i, T.length), F.sy(NR + 1 - rk.r)]; });
+          ln(s, pts, A2(fc, 1 - j * 0.22), 2.2);
+          pts.forEach(function (p) { ci(s, p[0], p[1], 2.6, A2(fc, 1 - j * 0.22)); });
+          txm(s, pts[pts.length - 1][0] + 5, pts[pts.length - 1][1] + 3, it.item, 8, "#3A3F49");
+        });
+        for (var q = 1; q <= NR; q++) { txm(s, F.x0 - 5, F.sy(NR + 1 - q) + 3, "#" + q, 8, "#69707B", "end"); }
+      },
+      rRadar: function (s, d, fc) {
+        var keys = Object.keys(d[0].vals), cx = VW / 2, cy = VH / 2 + 6, R = 78;
+        [1, 2 / 3, 1 / 3].forEach(function (f) {
+          var pts = keys.map(function (k0, i) {
+            var a = -Math.PI / 2 + i * 2 * Math.PI / keys.length;
+            return [cx + R * f * Math.cos(a), cy + R * f * Math.sin(a)];
+          });
+          pts.push(pts[0]);
+          ln(s, pts, "rgba(60,60,67,0.18)", 1);
+        });
+        keys.forEach(function (k0, i) {
+          var a = -Math.PI / 2 + i * 2 * Math.PI / keys.length;
+          s.appendChild(S("line", { x1: cx, x2: cx + R * Math.cos(a), y1: cy, y2: cy + R * Math.sin(a),
+            stroke: "rgba(60,60,67,0.15)", "stroke-width": 1 }));
+          txm(s, cx + (R + 13) * Math.cos(a), cy + (R + 13) * Math.sin(a) + 3, k0, 8, "#3A3F49", "middle");
+        });
+        d.slice(0, 2).forEach(function (p0, j) {
+          var pts = keys.map(function (k0) {
+            var i = keys.indexOf(k0);
+            var a = -Math.PI / 2 + i * 2 * Math.PI / keys.length, f = p0.vals[k0] / 100;
+            return [cx + R * f * Math.cos(a), cy + R * f * Math.sin(a)];
+          });
+          var dd = "M" + pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") + "Z";
+          if (j === 0) { pth(s, dd, { f: A2(fc, 0.25), st: fc, w: 2 }); }
+          else { pth(s, dd, { st: "#69707B", w: 1.8, dash: "4 3" }); }
+        });
+        legend(s, [[d[0].g, fc], [d[1].g, "#69707B"]]);
+      },
+      rGantt: function (s, d, fc) {
+        var mxE = Math.max.apply(null, d.map(function (t0) { return t0.e; }));
+        var x0 = 74, w0 = VW - x0 - 14, y0 = 20, rh = (VH - 56) / d.length;
+        for (var t = 0; t <= mxE; t += 10) {
+          var xx = x0 + (t / mxE) * w0;
+          s.appendChild(S("line", { x1: xx, x2: xx, y1: y0 - 6, y2: y0 + d.length * rh, stroke: "rgba(60,60,67,0.12)",
+            "stroke-width": 1, "stroke-dasharray": "1 4" }));
+          txm(s, xx, y0 + d.length * rh + 13, t, 8, "#69707B", "middle");
+        }
+        d.forEach(function (t0, i) {
+          txm(s, x0 - 7, y0 + i * rh + rh / 2 + 3, t0.task, 8.5, "#3A3F49", "end");
+          s.appendChild(S("rect", { x: x0 + (t0.s / mxE) * w0, y: y0 + i * rh + rh * 0.22,
+            width: ((t0.e - t0.s) / mxE) * w0, height: rh * 0.56, rx: 5, fill: A2(fc, 0.8 - i * 0.07) }));
+        });
+        txm(s, x0 + w0 / 2, VH - 3, "DAY", 7.5, "#8A9099", "middle");
+      },
+      rBeeswarm: function (s, d, fc, w0) {
+        var vs = d.map(function (p) { return p.v; });
+        var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
+        var x0 = 20, w1 = VW - 34, ymid = VH / 2;
+        s.appendChild(S("line", { x1: x0, x2: x0 + w1, y1: ymid, y2: ymid, stroke: "rgba(60,60,67,0.25)", "stroke-width": 1.2 }));
+        [mn, (mn + mx) / 2, mx].forEach(function (v) {
+          var xx = x0 + ((v - mn) / (mx - mn)) * w1;
+          s.appendChild(S("line", { x1: xx, x2: xx, y1: ymid - 4, y2: ymid + 4, stroke: "#69707B", "stroke-width": 1 }));
+          txm(s, xx, ymid + 52, Math.round(v), 8, "#69707B", "middle");
+        });
+        var lanes = {};
+        vs.slice().sort(function (a, b) { return a - b; }).forEach(function (v) {
+          var xr = Math.round((x0 + ((v - mn) / (mx - mn)) * w1) / 9) * 9;
+          lanes[xr] = (lanes[xr] || 0) + 1;
+          var k = lanes[xr], off = (k % 2 ? -1 : 1) * Math.floor(k / 2) * 8;
+          ci(s, xr, ymid + off, 3.6, A2(fc, 0.7), fc, 1);
+        });
+        txm(s, x0 + w1 / 2, VH - 6, String(hdr(w0, 0) || "VALUE").toUpperCase(), 7.5, "#8A9099", "middle");
+      },
+      rBoxplot: function (s, d, fc, w0) {
+        var all = [];
+        d.forEach(function (g0) { all = all.concat(g0.vals); });
+        var mn = Math.min.apply(null, all), mx = Math.max.apply(null, all);
+        var F = frame(s, { yMin: mn * 0.95, yMax: mx * 1.05, xlabs: d.map(function (g0) { return g0.g; }),
+          yT: hdr(w0, 1) });
+        d.forEach(function (g0, i) {
+          var a = g0.vals.slice().sort(function (p, q) { return p - q; });
+          var q1 = quart(a, 0.25), md = quart(a, 0.5), q3 = quart(a, 0.75);
+          var cx = F.sx(i, d.length), bw = 30;
+          s.appendChild(S("line", { x1: cx, x2: cx, y1: F.sy(a[0]), y2: F.sy(a[a.length - 1]),
+            stroke: "#69707B", "stroke-width": 1.4 }));
+          s.appendChild(S("rect", { x: cx - bw / 2, y: F.sy(q3), width: bw, height: F.sy(q1) - F.sy(q3),
+            rx: 4, fill: A2(fc, 0.3), stroke: fc, "stroke-width": 1.6 }));
+          s.appendChild(S("line", { x1: cx - bw / 2, x2: cx + bw / 2, y1: F.sy(md), y2: F.sy(md),
+            stroke: fc, "stroke-width": 2.2 }));
+        });
+      },
+      rViolin: function (s, d, fc, w0) {
+        var all = [];
+        d.forEach(function (g0) { all = all.concat(g0.vals); });
+        var mn = Math.min.apply(null, all), mx = Math.max.apply(null, all);
+        var F = frame(s, { yMin: mn * 0.97, yMax: mx * 1.03, xlabs: d.map(function (g0) { return g0.g; }),
+          yT: hdr(w0, 1) });
+        d.forEach(function (g0, i) {
+          var cx = F.sx(i, d.length), bins = 8, cnt = [], b;
+          for (b = 0; b < bins; b++) { cnt.push(0); }
+          g0.vals.forEach(function (v) {
+            cnt[Math.min(bins - 1, Math.floor((v - mn) / (mx - mn) * bins))]++;
+          });
+          var mc = Math.max.apply(null, cnt), L = [], R = [];
+          for (b = 0; b <= bins; b++) {
+            var vv = mn + (b / bins) * (mx - mn);
+            var c1 = cnt[Math.min(b, bins - 1)], c0 = b > 0 ? cnt[b - 1] : c1;
+            var ww = (((c1 + c0) / 2) / mc) * 26 + 2;
+            L.push([cx - ww, F.sy(vv)]);
+            R.push([cx + ww, F.sy(vv)]);
+          }
+          pth(s, "M" + L.concat(R.reverse()).map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") + " Z",
+            { f: A2(fc, 0.3), st: fc, w: 1.6 });
+          s.appendChild(S("line", { x1: cx, x2: cx, y1: F.sy(mn), y2: F.sy(mx), stroke: "rgba(28,28,30,0.35)", "stroke-width": 1 }));
+        });
+      },
+      rHorizon: function (s, d, fc) {
+        var M = "JFMAMJJASOND".split("");
+        var x0 = 62, w0 = VW - x0 - 12, rh = (VH - 46) / d.length;
+        d.forEach(function (g0, i) {
+          var y0 = 16 + i * rh, mn = Math.min.apply(null, g0.vals), mx = Math.max.apply(null, g0.vals);
+          var mid = (mn + mx) / 2;
+          txm(s, x0 - 7, y0 + rh / 2 + 2, g0.g, 8.5, "#3A3F49", "end");
+          s.appendChild(S("line", { x1: x0, x2: x0 + w0, y1: y0 + rh - 8, y2: y0 + rh - 8, stroke: "rgba(60,60,67,0.16)", "stroke-width": 1 }));
+          [[false, 0.3], [true, 0.65]].forEach(function (bd) {
+            var pts = g0.vals.map(function (v, k) {
+              var f = bd[0] ? Math.max(0, (v - mid) / (mx - mid || 1)) : (v - mn) / (mx - mn || 1);
+              return (x0 + (k + 0.5) * (w0 / 12)).toFixed(1) + "," + (y0 + rh - 8 - f * (rh - 14)).toFixed(1);
+            });
+            pth(s, "M" + (x0 + 0.5 * (w0 / 12)).toFixed(1) + "," + (y0 + rh - 8) + " L" + pts.join(" L") +
+              " L" + (x0 + 11.5 * (w0 / 12)).toFixed(1) + "," + (y0 + rh - 8) + " Z", { f: A2(fc, bd[1]) });
+          });
+        });
+        M.forEach(function (m0, k) {
+          if (k % 2 === 0) { txm(s, x0 + (k + 0.5) * (w0 / 12), VH - 16, m0, 8, "#69707B", "middle"); }
+        });
+      },
+      rHex: function (s, d, fc, w0) {
+        var xs = d.map(function (p) { return p.x; }), ys = d.map(function (p) { return p.y; });
+        var xm = Math.min.apply(null, xs), xM = Math.max.apply(null, xs);
+        var ym = Math.min.apply(null, ys), yM = Math.max.apply(null, ys);
+        var F = frame(s, { yMin: ym, yMax: yM, yT: hdr(w0, 1), xT: hdr(w0, 0) });
+        var CX = 9, CY = 6, bins = {};
+        d.forEach(function (p) {
+          var cx0 = Math.min(CX - 1, Math.floor((p.x - xm) / ((xM - xm) || 1) * CX));
+          var cy0 = Math.min(CY - 1, Math.floor((p.y - ym) / ((yM - ym) || 1) * CY));
+          bins[cx0 + "_" + cy0] = (bins[cx0 + "_" + cy0] || 0) + 1;
+        });
+        var mc = 0;
+        Object.keys(bins).forEach(function (k) { mc = Math.max(mc, bins[k]); });
+        Object.keys(bins).forEach(function (k) {
+          var q = k.split("_"), cx0 = +q[0], cy0 = +q[1];
+          var px = F.x0 + (cx0 + 0.5) * (F.w / CX) + (cy0 % 2) * (F.w / CX / 2);
+          var py = F.y0 + F.h - (cy0 + 0.5) * (F.h / CY);
+          var pts = [];
+          for (var a = 0; a < 6; a++) {
+            var an = Math.PI / 6 + a * Math.PI / 3;
+            pts.push((px + 12 * Math.cos(an)).toFixed(1) + "," + (py + 12 * Math.sin(an)).toFixed(1));
+          }
+          pth(s, "M" + pts.join(" L") + "Z", { f: A2(fc, 0.14 + 0.76 * bins[k] / mc) });
+        });
+        txm(s, F.x0 + F.w, F.y0 + F.h + 13, Math.round(xM), 8, "#69707B", "middle");
+        txm(s, F.x0, F.y0 + F.h + 13, Math.round(xm), 8, "#69707B", "middle");
+      },
+      rContour: function (s, d, fc, w0) {
+        var xs = d.map(function (p) { return p.x; }), ys = d.map(function (p) { return p.y; });
+        var xm = Math.min.apply(null, xs), xM = Math.max.apply(null, xs);
+        var ym = Math.min.apply(null, ys), yM = Math.max.apply(null, ys);
+        var F = frame(s, { yMin: ym, yMax: yM, yT: hdr(w0, 1), xT: hdr(w0, 0) });
+        var mx0 = 0, my0 = 0;
+        xs.forEach(function (v) { mx0 += v; }); mx0 /= xs.length;
+        ys.forEach(function (v) { my0 += v; }); my0 /= ys.length;
+        var sx = 0, sy0 = 0;
+        xs.forEach(function (v) { sx += (v - mx0) * (v - mx0); }); sx = Math.sqrt(sx / xs.length);
+        ys.forEach(function (v) { sy0 += (v - my0) * (v - my0); }); sy0 = Math.sqrt(sy0 / ys.length);
+        d.forEach(function (p) {
+          ci(s, F.x0 + (p.x - xm) / ((xM - xm) || 1) * F.w, F.sy(p.y), 2, A2(fc, 0.3));
+        });
+        [[1, 0.75], [1.7, 0.45], [2.4, 0.25]].forEach(function (lv) {
+          var cx = F.x0 + (mx0 - xm) / ((xM - xm) || 1) * F.w, cy = F.sy(my0);
+          s.appendChild(S("ellipse", { cx: cx, cy: cy, rx: lv[0] * sx / ((xM - xm) || 1) * F.w,
+            ry: lv[0] * sy0 / ((yM - ym) || 1) * F.h, fill: "none", stroke: A2(fc, lv[1]), "stroke-width": 1.8 }));
+        });
+        txm(s, F.x0 + F.w, F.y0 + F.h + 13, Math.round(xM), 8, "#69707B", "middle");
+      },
+      rHull: function (s, d, fc, w0) {
+        var cols = [fc, "#0E93A6", "#AF52DE"];
+        var xs = d.map(function (p) { return p.x; }), ys = d.map(function (p) { return p.y; });
+        var xm = Math.min.apply(null, xs), xM = Math.max.apply(null, xs);
+        var ym = Math.min.apply(null, ys), yM = Math.max.apply(null, ys);
+        var F = frame(s, { yMin: ym, yMax: yM, yT: hdr(w0, 1), xT: hdr(w0, 0) });
+        var G = [];
+        d.forEach(function (p) { if (G.indexOf(p.g) < 0) { G.push(p.g); } });
+        G.forEach(function (g0, gi) {
+          var pts = d.filter(function (p) { return p.g === g0; }).map(function (p) {
+            return [F.x0 + (p.x - xm) / ((xM - xm) || 1) * F.w, F.sy(p.y)];
+          });
+          pts.forEach(function (p) { ci(s, p[0], p[1], 3, A2(cols[gi % 3], 0.75)); });
+          var hull = pts.slice().sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+          function cross(o, a, b) { return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]); }
+          var lo = [], up = [];
+          hull.forEach(function (p) {
+            while (lo.length >= 2 && cross(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) { lo.pop(); }
+            lo.push(p);
+          });
+          hull.slice().reverse().forEach(function (p) {
+            while (up.length >= 2 && cross(up[up.length - 2], up[up.length - 1], p) <= 0) { up.pop(); }
+            up.push(p);
+          });
+          var H = lo.slice(0, -1).concat(up.slice(0, -1));
+          pth(s, "M" + H.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") + "Z",
+            { st: cols[gi % 3], w: 1.6, dash: "5 4" });
+        });
+        legend(s, G.map(function (g0, gi) { return [g0, cols[gi % 3]]; }));
+      },
+      rVoronoi: function (s, d, fc) {
+        var x0 = 14, y0 = 14, w0 = VW - 28, h0 = VH - 40;
+        var GX = 34, GY = 22, gx, gy;
+        for (gx = 0; gx < GX; gx++) {
+          for (gy = 0; gy < GY; gy++) {
+            var px = (gx + 0.5) / GX, py = (gy + 0.5) / GY, best = 0, bd = 9;
+            d.forEach(function (sd, si) {
+              var dd = (px - sd.x) * (px - sd.x) + (py - sd.y) * (py - sd.y);
+              if (dd < bd) { bd = dd; best = si; }
+            });
+            rc(s, x0 + gx * (w0 / GX), y0 + gy * (h0 / GY), w0 / GX + 0.6, h0 / GY + 0.6,
+              A2(fc, 0.1 + best * 0.13), 0);
+          }
+        }
+        d.forEach(function (sd) {
+          ci(s, x0 + sd.x * w0, y0 + sd.y * h0, 3.4, "#1C1C1E");
+          txm(s, x0 + sd.x * w0 + 6, y0 + sd.y * h0 - 6, sd.l, 8.5, "#1C1C1E");
+        });
+      },
+      rScatter: function (s, d, fc, w0) {
+        var xs = d.map(function (p) { return p.x; }), ys = d.map(function (p) { return p.y; });
+        var xM = Math.max.apply(null, xs) * 1.1;
+        var ym = Math.min.apply(null, ys) - 4, yM = Math.max.apply(null, ys) + 3;
+        var F = frame(s, { yMin: ym, yMax: yM, yT: hdr(w0, 1), xT: hdr(w0, 0) });
+        var sM = Math.max.apply(null, d.map(function (p) { return p.s; }));
+        d.forEach(function (p) {
+          var px = F.x0 + (p.x / xM) * F.w, py = F.sy(p.y), r0 = 4 + Math.sqrt(p.s / sM) * 16;
+          ci(s, px, py, r0, A2(fc, 0.35), fc, 1.4);
+          txm(s, px, py - r0 - 3, p.l, 8, "#3A3F49", "middle");
+        });
+        txm(s, F.x0 + F.w, F.y0 + F.h + 13, kfmt(xM), 8, "#69707B", "middle");
+      },
+      rArc: function (s, d, fc) {
+        var N = d.nodes.length, x0 = 30, w0 = VW - 60, yb = VH - 52;
+        s.appendChild(S("line", { x1: x0 - 8, x2: x0 + w0 + 8, y1: yb, y2: yb, stroke: "rgba(60,60,67,0.25)", "stroke-width": 1.2 }));
+        var wM = Math.max.apply(null, d.links.map(function (L) { return L.w; }));
+        d.links.forEach(function (L) {
+          var xa = x0 + (L.s / (N - 1)) * w0, xb = x0 + (L.t / (N - 1)) * w0;
+          pth(s, arcP((xa + xb) / 2, yb, Math.abs(xb - xa) / 2, Math.PI, 2 * Math.PI),
+            { st: A2(fc, 0.25 + 0.6 * L.w / wM), w: 1 + 2.6 * L.w / wM });
+        });
+        d.nodes.forEach(function (nd, i) {
+          var xx = x0 + (i / (N - 1)) * w0;
+          ci(s, xx, yb, 4, fc);
+          txm(s, xx, yb + 16, nd.l, 8, "#3A3F49", "middle");
+        });
+      },
+      rChord: function (s, d, fc) {
+        var cx = VW / 2, cy = VH / 2 + 4, R = 82;
+        var sums = d.matrix.map(function (row) {
+          return row.reduce(function (a, b) { return a + b; }, 0);
+        });
+        var tot = sums.reduce(function (a, b) { return a + b; }, 0);
+        var a0 = -Math.PI / 2, arcs = [];
+        sums.forEach(function (sm, i) {
+          var a1 = a0 + (sm / tot) * 2 * Math.PI * 0.92;
+          arcs.push([a0, a1]);
+          pth(s, arcP(cx, cy, R, a0, a1), { st: A2(fc, 0.5 + i * 0.12), w: 9 });
+          var mid = (a0 + a1) / 2;
+          txm(s, cx + (R + 17) * Math.cos(mid), cy + (R + 17) * Math.sin(mid) + 3, d.labels[i], 8, "#3A3F49", "middle");
+          a0 = a1 + 2 * Math.PI * 0.08 / sums.length;
+        });
+        var mM = 0;
+        d.matrix.forEach(function (r0) { r0.forEach(function (v) { mM = Math.max(mM, v); }); });
+        for (var i = 0; i < d.labels.length; i++) {
+          for (var j = i + 1; j < d.labels.length; j++) {
+            var v = d.matrix[i][j];
+            if (!v) { continue; }
+            var A0 = (arcs[i][0] + arcs[i][1]) / 2, B0 = (arcs[j][0] + arcs[j][1]) / 2;
+            pth(s, "M" + (cx + (R - 7) * Math.cos(A0)).toFixed(1) + "," + (cy + (R - 7) * Math.sin(A0)).toFixed(1) +
+              " Q" + cx + "," + cy + " " +
+              (cx + (R - 7) * Math.cos(B0)).toFixed(1) + "," + (cy + (R - 7) * Math.sin(B0)).toFixed(1),
+              { st: A2(fc, 0.14 + 0.38 * v / mM), w: 2 + 9 * v / mM, cap: "round" });
+          }
+        }
+      },
+      rParallel: function (s, d, fc) {
+        var A = d.axes, x0 = 34, w0 = VW - 60;
+        var mins = A.map(function (a2, k) {
+          return Math.min.apply(null, d.rows.map(function (r0) { return r0.vals[k]; }));
+        });
+        var maxs = A.map(function (a2, k) {
+          return Math.max.apply(null, d.rows.map(function (r0) { return r0.vals[k]; }));
+        });
+        A.forEach(function (ax, k) {
+          var xx = x0 + (k / (A.length - 1)) * w0;
+          s.appendChild(S("line", { x1: xx, x2: xx, y1: 30, y2: VH - 34, stroke: "rgba(60,60,67,0.28)", "stroke-width": 1.3 }));
+          txm(s, xx, 18, ax, 8.5, "#3A3F49", "middle");
+          txm(s, xx, VH - 20, kfmt(mins[k]), 7.5, "#8A9099", "middle");
+          txm(s, xx, 40, kfmt(maxs[k]), 7.5, "#8A9099", "middle");
+        });
+        d.rows.forEach(function (r0, ri) {
+          var pts = A.map(function (a2, k) {
+            var f = (r0.vals[k] - mins[k]) / ((maxs[k] - mins[k]) || 1);
+            return [x0 + (k / (A.length - 1)) * w0, (VH - 34) - f * (VH - 34 - 46)];
+          });
+          ln(s, pts, A2(fc, ri === 0 ? 0.95 : 0.4), ri === 0 ? 2.4 : 1.6);
+        });
+      },
+      rMatrix: function (s, d, fc) {
+        var X = [], Y = [];
+        d.forEach(function (c0) {
+          if (X.indexOf(c0.x) < 0) { X.push(c0.x); }
+          if (Y.indexOf(c0.y) < 0) { Y.push(c0.y); }
+        });
+        var x0 = 62, y0 = 18, cw = (VW - x0 - 14) / X.length, chh = (VH - y0 - 34) / Y.length;
+        var mV = 0;
+        d.forEach(function (c0) { mV = Math.max(mV, c0.v); });
+        d.forEach(function (c0) {
+          var xi = X.indexOf(c0.x), yi = Y.indexOf(c0.y);
+          var a = c0.v / mV;
+          rc(s, x0 + xi * cw + 1.5, y0 + yi * chh + 1.5, cw - 3, chh - 3,
+            c0.v === 0 ? "rgba(120,120,128,0.07)" : A2(fc, 0.15 + 0.75 * a), 4);
+          if (c0.v > 0) {
+            txm(s, x0 + xi * cw + cw / 2, y0 + yi * chh + chh / 2 + 3, c0.v, 8,
+              a > 0.55 ? "#FFFFFF" : "#3A3F49", "middle");
+          }
+        });
+        X.forEach(function (xl, xi) { txm(s, x0 + xi * cw + cw / 2, VH - 18, xl, 8, "#69707B", "middle"); });
+        Y.forEach(function (yl, yi) { txm(s, x0 - 7, y0 + yi * chh + chh / 2 + 3, yl, 8, "#69707B", "end"); });
+      },
+      rCircDendro: function (s, d, fc) {
+        var cx = VW / 2, cy = VH / 2 + 4, RD = [0, 42, 86];
+        var nodes = d.nodes, mD = 0;
+        nodes.forEach(function (nd) { mD = Math.max(mD, nd.depth); });
+        function pos(nd) {
+          return [cx + RD[nd.depth] * Math.sin(nd.angle), cy - RD[nd.depth] * Math.cos(nd.angle)];
+        }
+        nodes.forEach(function (nd) {
+          if (nd.depth === 0) { return; }
+          var parent = null, bd = 99;
+          nodes.forEach(function (p0) {
+            if (p0.depth === nd.depth - 1) {
+              var dd = Math.abs(p0.angle - nd.angle);
+              if (dd < bd) { bd = dd; parent = p0; }
+            }
+          });
+          var a = pos(parent), b = pos(nd);
+          pth(s, "M" + a[0].toFixed(1) + "," + a[1].toFixed(1) + " Q" +
+            ((a[0] + b[0]) / 2).toFixed(1) + "," + ((a[1] + b[1]) / 2 - 8).toFixed(1) + " " +
+            b[0].toFixed(1) + "," + b[1].toFixed(1), { st: "rgba(60,60,67,0.3)", w: 1.2 });
+        });
+        nodes.forEach(function (nd) {
+          var p = pos(nd);
+          ci(s, p[0], p[1], nd.depth === 0 ? 4 : 3, A2(fc, 1 - nd.depth * 0.25));
+          if (nd.depth === mD) {
+            txm(s, cx + (RD[mD] + 13) * Math.sin(nd.angle), cy - (RD[mD] + 13) * Math.cos(nd.angle) + 3,
+              nd.l, 8, "#3A3F49", "middle");
+          } else if (nd.depth === 1) {
+            txm(s, p[0], p[1] - 8, nd.l, 8, "#69707B", "middle");
+          }
+        });
+      },
+      rLinDendro: function (s, d, fc) {
+        var x0 = 26, w0 = VW - 110, y0 = 16, h0 = VH - 32;
+        function P(nd) { return [x0 + nd.x * w0, y0 + nd.y * h0]; }
+        d.forEach(function (nd) {
+          if (nd.p == null) { return; }
+          var a = P(d[nd.p]), b = P(nd);
+          pth(s, "M" + a[0].toFixed(1) + "," + a[1].toFixed(1) + " L" + a[0].toFixed(1) + "," + b[1].toFixed(1) +
+            " L" + b[0].toFixed(1) + "," + b[1].toFixed(1), { st: "rgba(60,60,67,0.32)", w: 1.3 });
+        });
+        d.forEach(function (nd) {
+          var p = P(nd);
+          ci(s, p[0], p[1], nd.leaf ? 3 : 3.6, A2(fc, nd.leaf ? 0.85 : 0.5));
+          txm(s, p[0] + (nd.leaf ? 7 : 0), p[1] + (nd.leaf ? 3 : -8), nd.l, 8,
+            nd.leaf ? "#1C1C1E" : "#69707B", nd.leaf ? "" : "middle");
+        });
+      },
+      rPie: function (s, d, fc) {
+        var cx = 92, cy = VH / 2, R = 66;
+        var tot = d.reduce(function (a, b) { return a + b.v; }, 0);
+        var a0 = -Math.PI / 2, al = [0.95, 0.7, 0.5, 0.34, 0.2];
+        d.forEach(function (sg, i) {
+          var a1 = a0 + (sg.v / tot) * 2 * Math.PI - 0.05;
+          pth(s, arcP(cx, cy, R - 13, a0, Math.max(a1, a0 + 0.02)), { st: A2(fc, al[i % 5]), w: 24 });
+          a0 = a1 + 0.05;
+        });
+        var ly = cy - d.length * 10 + 8;
+        d.forEach(function (sg, i) {
+          s.appendChild(S("rect", { x: 188, y: ly - 7 + i * 20, width: 9, height: 9, rx: 3, fill: A2(fc, al[i % 5]) }));
+          txm(s, 203, ly + 1 + i * 20, sg.l, 8.5, "#3A3F49");
+          txm(s, VW - 14, ly + 1 + i * 20, Math.round(sg.v / tot * 100) + "%", 8.5, "#1C1C1E", "end");
+        });
+      },
+      rStream: function (s, d, fc) {
+        var G = d[0].ls.map(function (l0) { return l0.g; });
+        var tots = d.map(function (r0) {
+          return r0.ls.reduce(function (a, b) { return a + b.v; }, 0);
+        });
+        var mT = Math.max.apply(null, tots);
+        var x0 = 22, w0 = VW - 84, cy = VH / 2, K = (VH - 70) / mT;
+        var al = [0.7, 0.5, 0.34, 0.2];
+        var lo = d.map(function (r0, i) { return -tots[i] / 2; });
+        G.forEach(function (g0, j) {
+          var hi = lo.map(function (v, i) { return v + d[i].ls[j].v; });
+          var up = d.map(function (r0, i) { return [x0 + i / (d.length - 1) * w0, cy + hi[i] * K]; });
+          var dn = d.map(function (r0, i) { return [x0 + i / (d.length - 1) * w0, cy + lo[i] * K]; }).reverse();
+          pth(s, "M" + up.concat(dn).map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" L") + "Z",
+            { f: A2(fc, al[j % 4]) });
+          txm(s, x0 + w0 + 6, cy + ((hi[d.length - 1] + lo[d.length - 1]) / 2) * K + 3, g0, 8, "#3A3F49");
+          lo = hi;
+        });
+        d.forEach(function (r0, i) { txm(s, x0 + i / (d.length - 1) * w0, VH - 8, r0.x, 8, "#69707B", "middle"); });
+      },
+      rSunburst: function (s, d, fc) {
+        var cx = VW / 2, cy = VH / 2 + 4;
+        function ring(items, r0, wdt, a0, span, depth) {
+          var tot = items.reduce(function (a, b) { return a + b.v; }, 0);
+          var a = a0;
+          items.forEach(function (it, i) {
+            var sp = (it.v / tot) * span;
+            pth(s, arcP(cx, cy, r0, a + 0.02, a + sp - 0.02),
+              { st: A2(fc, Math.max(0.15, 0.85 - depth * 0.25 - i * 0.07)), w: wdt });
+            if (sp > 0.45) {
+              var mid = a + sp / 2;
+              txm(s, cx + r0 * Math.cos(mid), cy + r0 * Math.sin(mid) + 3, it.l, 7.5, "#FFFFFF", "middle");
+            }
+            if (it.ch) { ring(it.ch, r0 + wdt + 3, wdt, a, sp, depth + 1); }
+            a += sp;
+          });
+        }
+        ring(d.ch, 34, 22, -Math.PI / 2, 2 * Math.PI, 0);
+      },
+      rTreemap: function (s, d, fc) {
+        var items = d.slice().sort(function (a, b) { return b.v - a.v; });
+        var tot = items.reduce(function (a, b) { return a + b.v; }, 0);
+        var x0 = 12, y0 = 12, w0 = VW - 24, h0 = VH - 24;
+        var leftShare = (items[0].v + items[2].v) / tot;
+        function cell(x, y, w1, h1, it, i) {
+          rc(s, x + 1.5, y + 1.5, Math.max(2, w1 - 3), Math.max(2, h1 - 3), A2(fc, Math.max(0.14, 0.9 - i * 0.12)), 6);
+          if (w1 > 62 && h1 > 34) {
+            txm(s, x + 10, y + 18, it.l, 9, i < 2 ? "#FFFFFF" : "#1C1C1E");
+            txm(s, x + 10, y + 31, kfmt(it.v), 8, i < 2 ? "rgba(255,255,255,0.85)" : "#69707B");
+          }
+        }
+        var wL = w0 * leftShare;
+        var hTop = h0 * (items[0].v / (items[0].v + items[2].v));
+        cell(x0, y0, wL, hTop, items[0], 0);
+        cell(x0, y0 + hTop, wL, h0 - hTop, items[2], 2);
+        var rest = [items[1]].concat(items.slice(3));
+        var rTot = rest.reduce(function (a, b) { return a + b.v; }, 0), yy = y0;
+        rest.forEach(function (it, k) {
+          var hh = h0 * (it.v / rTot);
+          cell(x0 + wL, yy, w0 - wL, hh, it, k === 0 ? 1 : k + 2);
+          yy += hh;
+        });
+      },
+      rCirclePack: function (s, d, fc) {
+        var cx = VW / 2, cy = VH / 2 + 2, R = 100;
+        ci(s, cx, cy, R, "none", "rgba(60,60,67,0.25)", 1.4);
+        var tot = d.ch.reduce(function (a, b) { return a + b.v; }, 0);
+        var a0 = -Math.PI / 2;
+        d.ch.forEach(function (ch0) {
+          var r0 = Math.sqrt(ch0.v / tot) * 62;
+          var dist = R - r0 - 8;
+          var px = cx + dist * Math.cos(a0), py = cy + dist * Math.sin(a0);
+          ci(s, px, py, r0, A2(fc, 0.3), fc, 1.4);
+          txm(s, px, py - (ch0.ch ? 8 : -3), ch0.l, 8.5, "#1C1C1E", "middle");
+          if (ch0.ch) {
+            ch0.ch.slice(0, 3).forEach(function (gg, k) {
+              var ga = a0 + (k - 1) * 0.8;
+              ci(s, px + (r0 - 12) * Math.cos(ga) * 0.55, py + 8 + (r0 - 14) * Math.sin(ga) * 0.35, 7, A2(fc, 0.6));
+            });
+          }
+          a0 += 2 * Math.PI / d.ch.length;
+        });
+      },
+      rVoronoiTM: function (s, d, fc) {
+        var x0 = 12, y0 = 12, w0 = VW - 24, h0 = VH - 24;
+        var tot = d.reduce(function (a, b) { return a + b.v; }, 0);
+        var seeds = d.map(function (it, i) {
+          var a = i * 2.4 + 0.7, r0 = 0.18 + 0.3 * Math.sqrt(1 - it.v / tot);
+          return { x: 0.5 + r0 * Math.cos(a), y: 0.5 + r0 * Math.sin(a), it: it };
+        });
+        var GX = 30, GY = 20, gx, gy;
+        for (gx = 0; gx < GX; gx++) {
+          for (gy = 0; gy < GY; gy++) {
+            var px = (gx + 0.5) / GX, py = (gy + 0.5) / GY, best = 0, bd = 9e9;
+            seeds.forEach(function (sd, si) {
+              var dd = ((px - sd.x) * (px - sd.x) + (py - sd.y) * (py - sd.y)) / Math.sqrt(sd.it.v / tot + 0.05);
+              if (dd < bd) { bd = dd; best = si; }
+            });
+            rc(s, x0 + gx * (w0 / GX), y0 + gy * (h0 / GY), w0 / GX + 0.6, h0 / GY + 0.6,
+              A2(fc, 0.16 + best * 0.11), 0);
+          }
+        }
+        seeds.forEach(function (sd) {
+          txm(s, x0 + sd.x * w0, y0 + sd.y * h0, sd.it.l, 8.5, "#1C1C1E", "middle");
+          txm(s, x0 + sd.x * w0, y0 + sd.y * h0 + 11, Math.round(sd.it.v / tot * 100) + "%", 7.5, "#3A3F49", "middle");
+        });
+      },
+      rSankey: function (s, d, fc) {
+        var srcs = d.nodes.slice(0, 3), mid = d.nodes[3], sinks = d.nodes.slice(4);
+        var totS = srcs.reduce(function (a, b) { return a + b.v; }, 0);
+        var K = (VH - 88) / totS, x0 = 58, xm = VW / 2, x1 = VW - 62;
+        function layout(items, x) {
+          var totH = items.reduce(function (a, b) { return a + b.v * K; }, 0) + (items.length - 1) * 9;
+          var y = (VH - totH) / 2 + 8, out = [];
+          items.forEach(function (nd) {
+            out.push({ x: x, y: y, h: nd.v * K, l: nd.l });
+            y += nd.v * K + 9;
+          });
+          return out;
+        }
+        var L = layout(srcs, x0), Mi = layout([mid], xm), Rt = layout(sinks, x1);
+        var mAcc = Mi[0].y;
+        L.forEach(function (nd) {
+          var ya = nd.y + nd.h / 2, yb = mAcc + nd.h / 2;
+          pth(s, "M" + (x0 + 5) + "," + ya.toFixed(1) + " C" + (x0 + 62) + "," + ya.toFixed(1) +
+            " " + (xm - 62) + "," + yb.toFixed(1) + " " + (xm - 5) + "," + yb.toFixed(1),
+            { st: A2(fc, 0.24), w: Math.max(3, nd.h - 1) });
+          mAcc += nd.h;
+        });
+        var mAcc2 = Mi[0].y;
+        Rt.forEach(function (nd) {
+          var yb = nd.y + nd.h / 2, ya = mAcc2 + nd.h / 2;
+          pth(s, "M" + (xm + 5) + "," + ya.toFixed(1) + " C" + (xm + 62) + "," + ya.toFixed(1) +
+            " " + (x1 - 62) + "," + yb.toFixed(1) + " " + (x1 - 5) + "," + yb.toFixed(1),
+            { st: A2(fc, 0.24), w: Math.max(3, nd.h - 1) });
+          mAcc2 += nd.h;
+        });
+        [L, Mi, Rt].forEach(function (col) {
+          col.forEach(function (nd) {
+            s.appendChild(S("rect", { x: nd.x - 5, y: nd.y, width: 10, height: nd.h, rx: 3, fill: A2(fc, 0.95) }));
+          });
+        });
+        L.forEach(function (nd) { txm(s, nd.x - 10, nd.y + nd.h / 2 + 3, nd.l, 8, "#3A3F49", "end"); });
+        Rt.forEach(function (nd) { txm(s, nd.x + 10, nd.y + nd.h / 2 + 3, nd.l, 8, "#3A3F49"); });
+        hx(s, xm, Mi[0].y - 7, mid.l, 8, "#3A3F49", "middle");
+      },
+      rAlluvial: function (s, d, fc) {
+        var NS = d.stages.length, x0 = 52, x1 = VW - 52;
+        var cols = d.stages.map(function (st0, k) {
+          var tot = st0.nodes.reduce(function (a, b) { return a + b.v; }, 0);
+          var K = (VH - 80) / tot, x = x0 + (k / (NS - 1)) * (x1 - x0);
+          var totH = tot * K + (st0.nodes.length - 1) * 8;
+          var y = 26 + (VH - 54 - totH) / 2, out = [];
+          st0.nodes.forEach(function (nd) {
+            out.push({ x: x, y: y, h: nd.v * K, l: nd.l });
+            y += nd.v * K + 8;
+          });
+          return out;
+        });
+        for (var k = 0; k < NS - 1; k++) {
+          cols[k].forEach(function (a) {
+            var accs = cols[k + 1].reduce(function (q, b) { return q + b.h; }, 0);
+            var off = 0;
+            cols[k + 1].forEach(function (b) {
+              var hh = a.h * (b.h / accs);
+              var ya = a.y + (off / accs) * a.h + hh / 2;
+              var yb = b.y + b.h / 2;
+              pth(s, "M" + (a.x + 5) + "," + ya.toFixed(1) + " C" + (a.x + 42) + "," + ya.toFixed(1) +
+                " " + (b.x - 42) + "," + yb.toFixed(1) + " " + (b.x - 5) + "," + yb.toFixed(1),
+                { st: A2(fc, 0.18), w: Math.max(2.5, hh - 0.5) });
+              off += b.h;
+            });
+          });
+        }
+        d.stages.forEach(function (st0, k) {
+          txm(s, x0 + (k / (NS - 1)) * (x1 - x0), 14, st0.l, 8.5, "#69707B", "middle");
+        });
+        cols.forEach(function (col, k) {
+          col.forEach(function (nd) {
+            s.appendChild(S("rect", { x: nd.x - 5, y: nd.y, width: 10, height: nd.h, rx: 3, fill: A2(fc, 0.95) }));
+            if (k === 0) { txm(s, nd.x - 10, nd.y + nd.h / 2 + 3, nd.l, 7.5, "#3A3F49", "end"); }
+            else if (k === NS - 1) { txm(s, nd.x + 10, nd.y + nd.h / 2 + 3, nd.l, 7.5, "#3A3F49"); }
+            else { hx(s, nd.x, nd.y - 5, nd.l, 7.5, "#3A3F49", "middle"); }
+          });
+        });
+      }
+    };
+
+    var fam = "all", q = "";
+    function famChips() {
+      var box = $("#cr-fams");
+      if (!box) { return; }
+      box.innerHTML = "";
+      var opts = [["all", "ALL"], ["comparison", "COMPARISON"], ["distribution", "DISTRIBUTION"],
+        ["relationship", "RELATIONSHIP"], ["composition", "COMPOSITION"], ["flow", "FLOW"]];
+      opts.forEach(function (o) {
+        box.appendChild(chip(o[1], fam === o[0], function () { fam = o[0]; famChips(); applyF(); }));
+      });
+    }
+    var cards = [];
+    function applyF() {
+      var qq = q.toLowerCase(), shown = 0;
+      cards.forEach(function (cd) {
+        var ok = (fam === "all" || cd.f === fam) &&
+          (!qq || cd.txt.indexOf(qq) >= 0);
+        cd.el.style.display = ok ? "" : "none";
+        shown += ok ? 1 : 0;
+      });
+      var ct = $("#cr-count");
+      if (ct) { ct.textContent = shown + (shown === 1 ? " chart" : " charts"); }
+    }
+
+    CR.forEach(function (c, i) {
+      var el = document.createElement("article");
+      el.className = "ccard";
+      el.setAttribute("data-f", c.f);
+      el.setAttribute("tabindex", "0");
+      var gl = document.createElement("div");
+      gl.className = "cglyph";
+      el.appendChild(gl);
+      if (DRAW[i]) { DRAW[i](gsvg(gl), FC[c.f]); }
+      var chead = document.createElement("div");
+      chead.className = "chead";
+      var ctop = document.createElement("div");
+      ctop.className = "ctop";
+      var h4 = document.createElement("h4");
+      h4.innerHTML = "<i></i>" + c.n + '<span class="cfam">' + FAML[c.f] + "</span>";
+      ctop.appendChild(h4);
+      var pf = PF[c.n] || PF_DEF[c.f];
+      var meta = document.createElement("div");
+      meta.className = "cmeta";
+      meta.innerHTML = '<span class="mlab">POSTURE FIT</span><div class="post">' +
+        ["o", "t", "a", "s"].map(function (L) {
+          return "<b class=\"" + L + (pf.indexOf(L) >= 0 ? " on" : "") + "\">" + L.toUpperCase() + "</b>";
+        }).join("") + "</div>";
+      ctop.appendChild(meta);
+      chead.appendChild(ctop);
+      var pd = document.createElement("p");
+      pd.className = "cdesc";
+      pd.textContent = c.d;
+      chead.appendChild(pd);
+      el.appendChild(chead);
+      var body = document.createElement("div");
+      body.className = "cbody";
+      var colA = document.createElement("div");
+      colA.className = "ccolA";
+      var viz = document.createElement("div");
+      viz.className = "cviz";
+      colA.appendChild(viz);
+      body.appendChild(colA);
+
+      var sheet = document.createElement("div");
+      sheet.className = "csheet";
+      var uHtml = "<ul>" + c.u.map(function (u0) { return "<li>" + u0 + "</li>"; }).join("") + "</ul>";
+      var eHtml = '<div class="encl">' + c.e.map(function (e0) {
+        return '<div class="encrow"><span class="' + (e0[2] ? "" : "opt") + '">' + e0[0] + " · " + e0[1] +
+          "</span><em>" + (e0[3] || "") + "</em></div>";
+      }).join("") + "</div>";
+      var tHtml = "";
+      if (c.w && c.w.length > 1) {
+        tHtml = '<div class="cs-b"><span class="lab">SAMPLE DATA — THE SHAPE IT EATS</span>' +
+          '<table class="cs-tbl"><thead><tr>' +
+          c.w[0].map(function (h0) { return "<th>" + h0 + "</th>"; }).join("") +
+          "</tr></thead><tbody>" +
+          c.w.slice(1).map(function (r0) {
+            return "<tr>" + r0.map(function (v0, ci0) {
+              return "<td" + (ci0 === r0.length - 1 ? ' class="num"' : "") + ">" + v0 + "</td>";
+            }).join("") + "</tr>";
+          }).join("") + "</tbody></table></div>";
+      }
+      sheet.className = "csr ccolB";
+      sheet.innerHTML =
+        '<div class="cs-b"><span class="lab">USE WHEN</span>' + uHtml + "</div>" +
+        '<div class="cs-b"><span class="lab">ENCODING</span>' + eHtml + "</div>" +
+        (PIT[c.n] ? '<div class="cs-b pit"><span class="lab">PITFALL</span><p>' + PIT[c.n] + "</p></div>" : "");
+      body.appendChild(sheet);
+      if (tHtml) {
+        var sx = document.createElement("div");
+        sx.className = "csx";
+        sx.innerHTML = tHtml;
+        colA.appendChild(sx);
+      }
+      el.appendChild(body);
+
+      function toggle() {
+        var was = el.classList.contains("open");
+        cards.forEach(function (cd) { cd.el.classList.remove("open"); });
+        if (!was) {
+          el.classList.add("open");
+          if (!el._viz && DET[c.fn]) {
+            var vs = S("svg", { viewBox: "0 0 340 230" });
+            vs.setAttribute("aria-hidden", "true");
+            viz.appendChild(vs);
+            DET[c.fn](vs, c.r, FC[c.f], c.w);
+            el._viz = 1;
+          }
+        }
+      }
+      el.addEventListener("click", toggle);
+      el.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
+      });
+
+      grid.appendChild(el);
+      cards.push({ el: el, f: c.f, txt: (c.n + " " + c.d + " " + FAML[c.f] + " " + c.u.join(" ")).toLowerCase() });
+    });
+
+    famChips();
+    var qEl = $("#cr-q");
+    if (qEl && qEl.addEventListener) {
+      qEl.addEventListener("input", function () { q = qEl.value || ""; applyF(); });
+    }
+    applyF();
   })();
 
   /* ---------- balanced masonry for card grids ---------- */
@@ -3100,45 +4541,48 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     });
   })();
 
-  /* ---------- blueprint route (click-driven; hash kept for history) ---------- */
+  /* ---------- routed pages: blueprint · chart reference ---------- */
   (function route() {
     var body = document.body;
     if (!body || !body.classList || !body.addEventListener) { return; }
-    var cta = $(".navlinks a.cta");
+    var links = $$(".navlinks a[data-route]");
     var brand = $(".brand");
-    function setRoute(on) {
-      body.classList.toggle("route-bp", on);
-      if (cta) {
-        cta.textContent = on ? "\u2190 BACK TO THE GUIDE" : "COMPOSE A BLUEPRINT";
-        cta.setAttribute("href", on ? "#top" : "#/blueprint");
-      }
+    var HASH = { bp: "#/blueprint", cr: "#/charts" };
+    function setRoute(r) {
+      body.classList.toggle("route-bp", r === "bp");
+      body.classList.toggle("route-cr", r === "cr");
+      links.forEach(function (a) {
+        a.classList.toggle("on", a.getAttribute("data-route") === r);
+      });
       window.scrollTo(0, 0);
       if (window.ScrollTrigger) {
         setTimeout(function () { ScrollTrigger.refresh(); }, 60);
       }
     }
-    function go(on) {
-      try { location.hash = on ? "#/blueprint" : "#top"; } catch (err) { /* sandboxed hash */ }
-      setRoute(on);
+    function go(r) {
+      try { location.hash = r ? HASH[r] : "#top"; } catch (err) { /* sandboxed hash */ }
+      setRoute(r);
     }
-    if (cta) {
-      cta.addEventListener("click", function (e) {
+    links.forEach(function (a) {
+      a.addEventListener("click", function (e) {
         if (e.preventDefault) { e.preventDefault(); }
-        go(!body.classList.contains("route-bp"));
+        go(a.classList.contains("on") ? "" : a.getAttribute("data-route"));
       });
-    }
+    });
     if (brand) {
       brand.addEventListener("click", function (e) {
-        if (body.classList.contains("route-bp")) {
+        if (body.classList.contains("route-bp") || body.classList.contains("route-cr")) {
           if (e.preventDefault) { e.preventDefault(); }
-          go(false);
+          go("");
         }
       });
     }
-    window.addEventListener("hashchange", function () {
-      setRoute(location.hash === "#/blueprint");
-    });
-    if (location.hash === "#/blueprint") { setRoute(true); }
+    function fromHash() {
+      var hsh = location.hash;
+      setRoute(hsh === HASH.bp ? "bp" : hsh === HASH.cr ? "cr" : "");
+    }
+    window.addEventListener("hashchange", fromHash);
+    if (location.hash === HASH.bp || location.hash === HASH.cr) { fromHash(); }
   })();
 
   /* ---------- scrollspy ---------- */
