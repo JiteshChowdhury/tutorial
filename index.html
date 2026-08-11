@@ -285,7 +285,7 @@ section{padding:76px 0 14px;position:relative}
 .legend{list-style:none;margin:20px 0 0;padding-top:18px;border-top:1px solid var(--rule);
   display:none;grid-template-columns:1fr 1fr;gap:6px 20px}
 .anatviz{position:relative}
-.zonetip{position:absolute;z-index:5;max-width:272px;pointer-events:none;opacity:0;
+.zonetip{position:absolute;z-index:5;max-width:min(272px,calc(100vw - 44px));pointer-events:none;opacity:0;
   transform:translateY(7px) scale(.97);transform-origin:20px 100%;transition:opacity .18s var(--ease),transform .18s var(--ease);
   background:rgba(255,255,255,.92);backdrop-filter:blur(22px) saturate(180%);
   -webkit-backdrop-filter:blur(22px) saturate(180%);
@@ -417,6 +417,25 @@ body.route-bp header.hero,body.route-bp main,body.route-bp footer,body.route-bp 
 .bspec b{color:var(--ink);font-weight:600}
 .bspec i{font-style:normal;color:var(--blue)}
 
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  section{padding:46px 0 10px}
+  .hero .dek{font-size:27px}
+  .demo-body{padding:14px}
+  .kpi .num{font-size:23px}
+  .readout{gap:8px}
+  .tstrip{grid-template-columns:1fr;row-gap:10px}
+  .tstrip .cell+.cell{border-left:none;padding-left:0}
+  .navlinks a.cta{padding:7px 12px;font-size:10px;letter-spacing:.05em}
+  .blegend{gap:6px 12px}
+  .bnotes{padding:8px 16px 12px}
+  .bcanvas-card{padding:12px}
+}
+@media (pointer:coarse){
+  .chip{min-height:36px}
+  .segbtn{min-height:42px}
+  .btn{min-height:36px}
+}
 footer{margin-top:72px;border-top:1px solid var(--rule);padding:30px 0 54px;
   font-family:var(--body);font-size:13px;color:var(--ink3);line-height:1.75;max-width:100%}
 footer b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink2);font-weight:600;margin-bottom:7px}
@@ -533,7 +552,16 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
   .legend{grid-template-columns:1fr}
   .kpis.four{grid-template-columns:repeat(2,1fr)}
 }
+@media (max-width:700px){#bg3d{display:none}}
 @media (max-width:660px){
+  .t3{grid-template-columns:1fr}
+  .t3 .cell+.cell{border-left:none;border-top:1px solid var(--rule)}
+  .demo-bar{flex-wrap:wrap;row-gap:8px}
+  .segbtn{font-size:11.5px;padding:8px 4px}
+  .anatviz{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .anatviz svg{min-width:560px}
+  #bp-canvas{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #bp-canvas svg{min-width:620px}
   .features,.prins,.rp,.picker{grid-template-columns:1fr}
   .bbar{grid-template-columns:1fr}
   .bbar .bgroup{border-left:none}
@@ -1516,8 +1544,9 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     }
     function render() {
       var armed = BUILD.stage[0] >= 3;
+      var opsW = Math.max(320, Math.min(640, chartBox.clientWidth || 640));
       drawLine(chartBox, {
-        w: 640, h: 168, min: 24, max: 66, rows: 4, thresh: (armed ? THRESH : null),
+        w: opsW, h: 168, min: 24, max: 66, rows: 4, thresh: (armed ? THRESH : null),
         label: "Live intake rate in cases per hour against a threshold of " + THRESH,
         series: [
           { vals: movingAvg(buf, 8), color: "#9AA1AB", width: 1.4, dash: "3 4" },
@@ -1586,7 +1615,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       curDay = day;
       var st = BUILD.stage[1];
       var res = drawLine(burn, {
-        w: 470, h: 208, min: 0, max: 120, rows: 4, xlabels: xl,
+        w: Math.max(300, Math.min(470, burn.clientWidth || 470)), h: 208, min: 0, max: 120, rows: 4, xlabels: xl,
         label: "Burn-down through day " + day + ": actual remaining points against the ideal pace",
         series: [{ vals: IDEAL, color: C.ink3, width: 1.5, dash: "4 4" }]
       });
@@ -1714,7 +1743,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         maxV = 240;
         seriesList = [{ vals: agg, color: "#1C1C1E" }];
         res = drawLine($("#ana-line"), {
-          w: 470, h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
+          w: Math.max(300, Math.min(470, ($("#ana-line").clientWidth || 470))), h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
           label: "Total monthly enrolment across all regions",
           series: [{ vals: agg, color: "#1C1C1E", width: 2.4, fill: true, endDot: true }]
         });
@@ -1722,7 +1751,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         maxV = 80;
         seriesList = keys.map(function (k) { return { vals: DATA[k].vals, color: DATA[k].color }; });
         res = drawLine($("#ana-line"), {
-          w: 470, h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
+          w: Math.max(300, Math.min(470, ($("#ana-line").clientWidth || 470))), h: 196, min: 0, max: maxV, rows: 4, xlabels: xl,
           label: keys.length ? "Monthly enrolment overlay for " + keys.join(", ") : "No regions selected",
           series: keys.map(function (k) {
             return { vals: DATA[k].vals, color: DATA[k].color, width: 2, endDot: true };
@@ -1888,7 +1917,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       var anchor = (z.querySelector && z.querySelector(".ztag")) || z;
       var ar = anchor.getBoundingClientRect();
       var tw = tip.offsetWidth || 260, th = tip.offsetHeight || 90;
-      var x = ar.left - cr.left;
+      var x = ar.left - cr.left + (viz.scrollLeft || 0);
       var y = ar.top - cr.top - th - 9;      /* prefer above the tag */
       if (y < 4) {                            /* no headroom → below the whole zone */
         var zr = z.getBoundingClientRect();
@@ -2542,9 +2571,16 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     gate();
     if (ih > 0 && scrollyOn) { setTimeout(function () { goType(ih); }, 60); }
 
+    var hkT = 0;
     window.addEventListener("resize", function () {
       place(cur); setH(cur, true); gate();
       if (scrollyOn && curS >= 1 && curS <= 5 && tipB.classList.contains("on")) { placeTip(cur, curS); }
+      clearTimeout(hkT);
+      hkT = setTimeout(function () {
+        for (var hi = 0; hi < panels.length; hi++) {
+          if (BUILD.hooks[hi]) { BUILD.hooks[hi](); }
+        }
+      }, 220);
     });
     window.addEventListener("load", function () { place(cur); setH(cur, true); gate(); });
     if (window.ResizeObserver) {
@@ -2732,7 +2768,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       if (!z.getBoundingClientRect || !canvas.getBoundingClientRect) { return; }
       var cr = canvas.getBoundingClientRect(), zr = z.getBoundingClientRect();
       var tw = tip.offsetWidth || 270, th = tip.offsetHeight || 80;
-      var x = zr.left - cr.left + zr.width / 2 - tw / 2;
+      var x = zr.left - cr.left + (canvas.scrollLeft || 0) + zr.width / 2 - tw / 2;
       var y = zr.top - cr.top - th - 10;
       if (y < 4) { y = zr.bottom - cr.top + 10; }
       x = Math.max(6, Math.min(cr.width - tw - 6, x));
@@ -3137,7 +3173,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
 
   /* ================= THREE — glass shards over the wallpaper ================= */
   (function three3d() {
-    if (!window.THREE) { return; }
+    if (!window.THREE || window.innerWidth < 700) { return; }
     var hero = document.querySelector("header.hero");
     var canvas = document.getElementById("bg3d");
     if (!canvas || !hero) { return; }
