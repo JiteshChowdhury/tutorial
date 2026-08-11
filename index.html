@@ -620,7 +620,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
 .stepnote b{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blue);display:block;
   margin-bottom:6px;font-weight:600}
 .stepnote p{font-size:14px;color:var(--ink);line-height:1.55}
-#types.scrolly-on .stage{position:sticky;top:68px}
+#types.scrolly-on .stage{position:-webkit-sticky;position:sticky;top:68px}
 #types.scrolly-on .typenav{position:static;top:auto}
 #types.scrolly-on .steps{display:block;margin-top:26px}
 #types.scrolly-on .scrolly{padding-bottom:6vh}
@@ -2707,7 +2707,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     function gate() {
       var wide = window.matchMedia ? window.matchMedia("(min-width: 900px)").matches : false;
       var vh = window.innerHeight || 0;
-      var need = (stage && stage.offsetHeight ? stage.offsetHeight : 1e9) + 96;
+      var need = (stage && stage.offsetHeight ? stage.offsetHeight : 1e9) + 24;
       var on = !!(steps.length && wide && vh >= need);
       if (on !== scrollyOn) {
         scrollyOn = on;
@@ -2812,6 +2812,10 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     if (ih > 0 && scrollyOn) { setTimeout(function () { goType(ih); }, 60); }
 
     var hkT = 0;
+    window.addEventListener("load", function () { setH(cur, true); gate(); });
+    if (document.fonts && document.fonts.ready && document.fonts.ready.then) {
+      document.fonts.ready.then(function () { setH(cur, true); gate(); });
+    }
     window.addEventListener("resize", function () {
       place(cur); setH(cur, true); gate();
       if (scrollyOn && curS >= 1 && curS <= 5 && tipB.classList.contains("on")) { placeTip(cur, curS); }
