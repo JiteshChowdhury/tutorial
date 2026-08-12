@@ -596,6 +596,13 @@ body.route-cr #builder{display:none}
   .segbtn{min-height:42px}
   .btn{min-height:36px}
 }
+.fwrap{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+.fnote{color:var(--ink2)}
+.fby{display:inline-flex;align-items:center;gap:7px;color:var(--ink3);white-space:nowrap}
+.flink{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-weight:600;
+  text-decoration:none;transition:color .2s}
+.flink svg{width:14px;height:14px;border-radius:3px}
+.flink:hover{color:#0868C9;text-decoration:underline;text-underline-offset:3px}
 footer{margin-top:72px;border-top:1px solid var(--rule);padding:30px 0 54px;
   font-family:var(--body);font-size:13px;color:var(--ink3);line-height:1.75;max-width:100%}
 footer b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink2);font-weight:600;margin-bottom:7px}
@@ -1454,8 +1461,13 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
 </section>
 
 <footer>
-  <div class="wrap">
-    <b>DETAIL EYE ON DASHBOARD — free to adapt.</b>
+  <div class="wrap fwrap">
+    <span class="fnote">A small field guide to dashboards — made to be read, poked at, and borrowed from.</span>
+    <span class="fby">Made by
+      <a class="flink" href="https://www.linkedin.com/in/jiteshalbus/" target="_blank" rel="noopener noreferrer" aria-label="Jitesh Chowdhury on LinkedIn">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" rx="3.2" fill="currentColor"/><path d="M4.6 6.4v5h-1.9v-5h1.9zM3.65 3.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM7.6 6.4v.8c.36-.55.98-.95 1.95-.95 1.45 0 2.35.9 2.35 2.6v2.55H10v-2.3c0-.85-.35-1.35-1.05-1.35-.75 0-1.25.5-1.25 1.4v2.25H5.8v-5h1.8z" fill="#F5F6F8"/></svg>Jitesh Chowdhury
+      </a>
+    </span>
   </div>
 </footer>
 
