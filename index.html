@@ -663,7 +663,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
   opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
 .tpanel.tspot .demo::after{opacity:1}
 .spot{position:relative;z-index:6;transform:scale(1.04);transition:transform .45s var(--ease)}
-.buildtip{position:absolute;z-index:45;max-width:302px;pointer-events:none;opacity:0;
+.buildtip{position:absolute;z-index:45;max-width:min(302px,calc(100vw - 44px));pointer-events:none;opacity:0;
   background:linear-gradient(155deg,rgba(255,255,255,.68),rgba(255,255,255,.4));
   backdrop-filter:blur(30px) saturate(190%);-webkit-backdrop-filter:blur(30px) saturate(190%);
   border:1px solid rgba(255,255,255,.88);border-radius:18px;padding:14px 16px;
@@ -2743,11 +2743,14 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     }
 
     /* mode gate: scrolly needs room to pin the whole stage */
+    var coarsePtr = !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
     function gate() {
-      var wide = window.matchMedia ? window.matchMedia("(min-width: 900px)").matches : false;
+      var wide = window.matchMedia ? window.matchMedia("(min-width: 760px)").matches : false;
       var vh = window.innerHeight || 0;
       var need = (stage && stage.offsetHeight ? stage.offsetHeight : 1e9) + 24;
-      var on = !!(steps.length && wide && vh >= need);
+      /* iOS toolbars shrink innerHeight mid-scroll; once engaged, hold through the dip */
+      var floor = (coarsePtr && scrollyOn) ? need - 130 : need;
+      var on = !!(steps.length && wide && vh >= floor);
       if (on !== scrollyOn) {
         scrollyOn = on;
         if (sec) { sec.classList.toggle("scrolly-on", on); }
