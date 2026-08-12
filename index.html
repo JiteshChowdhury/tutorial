@@ -670,9 +670,21 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
   box-shadow:inset 0 1px 1px rgba(255,255,255,.7),var(--shadow-lift);
   transition:left .55s var(--ease),top .55s var(--ease),opacity .3s var(--ease)}
 .buildtip.on{opacity:1}
-.buildtip b{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blue);display:block;
-  margin-bottom:6px;font-weight:600}
-.buildtip p{font-size:14px;line-height:1.55;color:var(--ink);margin:0}
+.buildtip{--tipc:var(--blue);--tipbg:rgba(10,132,255,.12)}
+.buildtip[data-tc="0"]{--tipc:#0E93A6;--tipbg:rgba(48,176,199,.14)}
+.buildtip[data-tc="2"]{--tipc:#C77700;--tipbg:rgba(255,159,10,.14)}
+.buildtip[data-tc="3"]{--tipc:#9A3DC8;--tipbg:rgba(175,82,222,.13)}
+.bt-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.bt-dots{display:flex;gap:4px}
+.bt-dots i{width:6px;height:6px;border-radius:3px;background:rgba(60,60,67,.22);
+  transition:all .3s var(--ease)}
+.bt-dots i.done{background:var(--tipc);opacity:.4}
+.bt-dots i.cur{width:16px;background:var(--tipc)}
+.bt-tag{font-family:var(--mono);font-size:8px;font-weight:600;letter-spacing:.18em;color:var(--tipc);
+  background:var(--tipbg);padding:2.5px 8px;border-radius:999px}
+.bt-h{font-size:14.5px;font-weight:700;letter-spacing:-.01em;line-height:1.25;color:var(--ink);
+  margin:0 0 5px}
+.buildtip p{font-size:12.5px;line-height:1.5;color:var(--ink2);margin:0}
 .buildtip::before{content:"";position:absolute;width:12px;height:12px;background:rgba(255,255,255,.92);
   transform:rotate(45deg);border:1px solid rgba(255,255,255,.9)}
 .buildtip[data-side="right"]::before{left:-7px;top:var(--cy,24px)}
@@ -2533,7 +2545,8 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     ];
     var tipB = document.createElement("div");
     tipB.className = "buildtip";
-    tipB.innerHTML = "<b></b><p></p>";
+    tipB.innerHTML = '<div class="bt-top"><span class="bt-dots"></span>' +
+      '<span class="bt-tag"></span></div><h5 class="bt-h"></h5><p></p>';
     deck.appendChild(tipB);
     var spotEl = null;
     function noteFor(t, s) {
@@ -2558,8 +2571,25 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       var note = noteFor(t, s);
       if (note && note.querySelector) {
         var nb = note.querySelector("b"), np = note.querySelector("p");
-        tipB.querySelector("b").textContent = nb ? nb.textContent : "";
+        var raw = nb ? nb.textContent : "";
+        var mSeq = raw.match(/(\d+)\s*\/\s*(\d+)/);
+        var cur0 = mSeq ? +mSeq[1] : 1, tot0 = mSeq ? +mSeq[2] : 5;
+        var title = raw.split("\u2014").pop().trim();
+        title = title.charAt(0) + title.slice(1).toLowerCase();
+        var dEl = tipB.querySelector(".bt-dots");
+        if (dEl) {
+          var dh = "";
+          for (var di = 1; di <= tot0; di++) {
+            dh += '<i class="' + (di === cur0 ? "cur" : (di < cur0 ? "done" : "")) + '"></i>';
+          }
+          dEl.innerHTML = dh;
+        }
+        var tg = tipB.querySelector(".bt-tag");
+        if (tg) { tg.textContent = ["OPS", "TACTICAL", "ANALYTICAL", "STRATEGIC"][t] || ""; }
+        var hEl = tipB.querySelector(".bt-h");
+        if (hEl) { hEl.textContent = title; }
         tipB.querySelector("p").textContent = np ? np.textContent : "";
+        tipB.setAttribute("data-tc", String(t));
       }
       var isDemoAnchor = !!(a.classList && a.classList.contains("demo"));
       panels.forEach(function (p0) { if (p0.classList) { p0.classList.remove("tspot"); } });
@@ -2660,6 +2690,11 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
     }
     /* one scroll step = one design decision */
     function setBuild(t, s) {
+      (function () {
+        var c0 = t / (panels.length - 1);
+        var lo = Math.max(0, c0 - 0.13), hi = Math.min(1, c0 + 0.13);
+        railTo((lo + (s / 6) * (hi - lo)) * 100);
+      })();
       t = Math.max(0, Math.min(panels.length - 1, t));
       s = Math.max(0, Math.min(6, s));
       var e = s >= 6 ? 5 : s;      /* 0 = empty canvas · 6 = full view, callout retired */
@@ -2671,7 +2706,11 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       if (!typeChanged) { setH(cur); }
       curS = s;
       if (!(window.gsap && window.ScrollTrigger)) {
-        railTo((t / (panels.length - 1)) * 100);
+        (function () {
+        var c0 = t / (panels.length - 1);
+        var lo = Math.max(0, c0 - 0.13), hi = Math.min(1, c0 + 0.13);
+        railTo((lo + (s / 6) * (hi - lo)) * 100);
+      })();
       }
       clearTimeout(tipTimer);
       if (s === 0 || s === 6) {
@@ -2712,6 +2751,9 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
       if (on !== scrollyOn) {
         scrollyOn = on;
         if (sec) { sec.classList.toggle("scrolly-on", on); }
+        if (window.ScrollTrigger) {
+          requestAnimationFrame(function () { ScrollTrigger.refresh(); });
+        }
         if (!on) {
           hideTip();
           /* fallback deck always shows the finished dashboards */
@@ -2744,11 +2786,6 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
         if (stepsBox) {
           ScrollTrigger.create({
             trigger: stepsBox, start: "top 60%", end: "bottom 60%",
-            onUpdate: function (self) {
-              if (scrollyOn) {
-                railTo(Math.max(0, Math.min(1, (self.progress * 4 - 0.5) / 3)) * 100);
-              }
-            },
             onLeave: hideTip, onLeaveBack: hideTip,
             onEnter: function () { if (curS >= 1 && curS <= 5) { placeTip(cur, curS); } },
             onEnterBack: function () { if (curS >= 1 && curS <= 5) { placeTip(cur, curS); } }
@@ -2760,8 +2797,7 @@ header.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-event
             if (e.isIntersecting && scrollyOn) {
               var st = e.target;
               setBuild(+st.getAttribute("data-t"), +st.getAttribute("data-s"));
-              var ix = steps.indexOf(st);
-              if (ix > -1) { railTo((ix / (steps.length - 1)) * 100); }
+              railTo(((+st.getAttribute("data-t") || 0) / (panels.length - 1)) * 100);
             }
           });
         }, { rootMargin: "-42% 0px -42% 0px" });
